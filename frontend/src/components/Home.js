@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
+import LoginReg from './LoginReg';
 
 const Home = () => {
     return (
         
         <div>
-            <h1>Trivia</h1>
-            <a href="/login">Login</a> <br/>
-            <a href="/register">Register</a>
-            
+            Home Page
+            <LoginReg />
         </div>
     )
 }
 
 export default Home
+
