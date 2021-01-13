@@ -9,7 +9,7 @@ class LoginReg extends React.Component {
     
   constructor(props) {
     super(props);
- 
+   
     this.state = {
       showModal: false,
       loading: false,
