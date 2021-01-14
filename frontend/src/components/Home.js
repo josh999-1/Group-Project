@@ -3,6 +3,7 @@ import LoginReg from './LoginReg';
 
 const Home = () => {
     return (
+        
         <div>
             Home Page
             <LoginReg />
