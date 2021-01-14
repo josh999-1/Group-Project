@@ -1,10 +1,11 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Register from "./components/Register";
-import Login from './components/Login'
-import Quiz from './components/Quiz'
-import Users from "./components/Users";
+import Login from "./components/Login";
+import Quiz from "./components/Quiz";
 import Select from "./components/Select";
+import Results from "./components/Results";
+import Table from "./components/Table";
 import "./App.css";
 
 function App() {
@@ -15,8 +16,9 @@ function App() {
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/quiz" component={Quiz} />
-        <Route exact path="/users" component={Users} />
         <Route exact path="/select" component={Select} />
+        <Route exact path="/results" component={Results} />
+        <Route exact path="/table" component={Table} />
       </Switch>
     </BrowserRouter>
   );
