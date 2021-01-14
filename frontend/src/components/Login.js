@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useRef,useState} from 'react'
 import axios from 'axios'
 
 const Login = () => {
@@ -26,19 +26,27 @@ const Login = () => {
         setBackendResponse(response.data.message)
         console.log(response)
     }
+    const dropdownRef = useRef(null);
+    const [isActive, setIsActive] = useState(false);
+    const onClick = () => setIsActive(!isActive);
 
+    
     return (
         
         <div>
-            <h1>Login User:</h1>
-            
+            <button onClick={onClick} className="menu-trigger">
+                Login User
+            </button>
+            <nav ref={dropdownRef} className={`menu ${isActive ? "active" : "inactive"}`}></nav>
+
+
             <form onSubmit={formHandler}>
                 <label>Email: </label>
-                <input type="email" name="userEmail" onChange={(e) => setEmail(e.target.value)} /> <br/>
+                <input type="email" name="userEmail" onChange={(e) => setEmail(e.target.value)} /> <br />
 
                 <label>Password</label>
-                <input type="password" name="userPassword" onChange={(e) => setPassword(e.target.value)} /> <br/>
-                
+                <input type="password" name="userPassword" onChange={(e) => setPassword(e.target.value)} /> <br />
+
                 <button type="submit">Register</button>
             </form>
 
