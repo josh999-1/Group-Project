@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
-import axios from 'axios'
+import React, {useRef,useState} from 'react'
+import axios from 'axios';
+import './register.css';
 
 const Register = () => {
 
@@ -31,21 +32,32 @@ const Register = () => {
         console.log(response)
     }
 
+    const dropdownRef = useRef(null);
+    const [isActive, setIsActive] = useState(false);
+    const onClick = () => setIsActive(!isActive);
+
     return (
         <div>
-            <h1>Register User:</h1>
-            
+            <button onClick={onClick} className="menu-trigger">
+                Register User
+            </button>
+            <nav ref={dropdownRef} className={`menu ${isActive ? "active" : "inactive"}`}></nav>
+
             <form onSubmit={formHandler}>
-                <label>User Name: </label> 
-                <input type="text" name="userName" onChange={(e) => setName(e.target.value)} /> <br/>
+
+
+                <label>User Name: </label>
+                <input type="text" name="userName" onChange={(e) => setName(e.target.value)} /> <br />
 
                 <label>Email: </label>
-                <input type="email" name="userEmail" onChange={(e) => setEmail(e.target.value)} /> <br/>
+                <input type="email" name="userEmail" onChange={(e) => setEmail(e.target.value)} /> <br />
 
                 <label>Password</label>
-                <input type="password" name="userPassword" onChange={(e) => setPassword(e.target.value)} /> <br/>
-                
+                <input type="password" name="userPassword" onChange={(e) => setPassword(e.target.value)} /> <br />
+
                 <button type="submit">Register</button>
+
+
             </form>
 
             {backendResponse}
