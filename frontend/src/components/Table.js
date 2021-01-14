@@ -9,6 +9,7 @@ class Table extends Component {
       { name: "Lola", score: 5, time: 180 },
       { name: "Mike", score: 5, time: 140 },
       { name: "Chris", score: 10, time: 135 },
+      { name: "Chris", score: 10, time: 135 },
     ],
   };
 
