@@ -1,12 +1,14 @@
 import React from 'react';
-import LoginReg from './LoginReg';
+import Login from './Login';
+import Register from './Register';
 
 const Home = () => {
     return (
         
         <div>
             Home Page
-            <LoginReg />
+            <Login />
+            <Register />
         </div>
     )
 }

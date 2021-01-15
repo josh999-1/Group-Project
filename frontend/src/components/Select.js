@@ -34,16 +34,51 @@ const Select = () => {
   const [isActive, setIsActive] = useState(false);
   const onClick = () => setIsActive(!isActive);
 
+  // const dropdownRef = useRef(null);
+  const [isDifActive, setIsDifActive] = useState(false);
+  const onClickDif = () => setIsDifActive(!isDifActive);
+  let finalCat = "";
+  let finalDif = "";
+
+  if (category.category == 9) {
+    finalCat = "General Knowledge";
+  } else if (category.category == 18) {
+    finalCat = "Science: Computers";
+  } else if (category.category == 15) {
+    finalCat = "Entertainment: Video Games";
+  } else if (category.category == 22) {
+    finalCat = "Geography";
+  } else if (category.category == 23) {
+    finalCat = "History";
+  } else if (category.category == 25) {
+    finalCat = "Art";
+  } else if (category.category == 28) {
+    finalCat = "Vehicles";
+  } else if (category.category == 27) {
+    finalCat = "Animals";
+  } else if (category.category == 21) {
+    finalCat = "Sports";
+  } else if (category.category == 20) {
+    finalCat = "Mythology";
+  }
+
+  if (difficulty.difficulty == "easy") {
+    finalDif = "Easy";
+  } else if (difficulty.difficulty == "medium") {
+    finalDif = "Medium";
+  } else if (difficulty.difficulty == "hard") {
+    finalDif = "Hard";
+  }
+
   return (
-    <div>
+    <div className="main">
+      <h2>Welcome user</h2>
+      <h1>Quiz Selection</h1>
       <div className="menu-container">
         <button onClick={onClick} className="menu-trigger">
           <span>Category</span>
         </button>
-        <nav
-          ref={dropdownRef}
-          className={`menu ${isActive ? "active" : "inactive"}`}
-        >
+        <nav ref={dropdownRef} className={`menu ${isActive ? "active" : "inactive"}`}>
           <ul>
             <li>
               <button name="category" value={9} onClick={setData}>
@@ -99,16 +134,16 @@ const Select = () => {
         </nav>
       </div>
       <div className="menu-container2">
-        <button onClick={onClick} className="menu-trigger">
+        <button onClick={onClickDif} className="menu-trigger2">
           <span>Difficulty</span>
         </button>
         <nav
           ref={dropdownRef}
-          className={`menu ${isActive ? "active" : "inactive"}`}
+          className={`menu2 ${isDifActive ? "active" : "inactive"}`}
         >
           <ul>
             <li>
-              <button name="difficulty" value={"Easy"} onClick={setDif}>
+              <button name="difficulty" value={"easy"} onClick={setDif}>
                 Easy
               </button>
             </li>
@@ -118,12 +153,19 @@ const Select = () => {
               </button>
             </li>
             <li>
-              <button name="difficulty" value={"Hard"} onClick={setDif}>
+              <button name="difficulty" value={"hard"} onClick={setDif}>
                 Hard
               </button>
             </li>
           </ul>
         </nav>
+        <p>You have selected</p>
+        <p className="cat">{finalCat}</p>
+        <p>Difficulty Level</p>
+        <p className="dif">{finalDif}</p>
+        <button type="sumbit" className="quizBut">
+          Start Quiz
+        </button>
       </div>
     </div>
   );
