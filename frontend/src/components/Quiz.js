@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Timer from "./Timer";
+import "./quiz.css";
+import { start } from "./Timer";
 import { diff, cate } from "./Select"
 
-
 const Quiz = () => {
+    const [results, setResults] = useState([]);
+    const num = 11;
+    const difficulty = "easy";
+
+    const [showQ, setQ] = useState(false);
+    const onClick = () => setQ(!showQ);
 
     const [results, setResults] = useState([])
     const [score, setScore] = useState("")
     console.log(diff, cate)
 
     useEffect(() => {
-        fetchApi();
-    }, [])
+      fetchApi();
+    }, []);
 
     const fetchApi = async () => {
         const res = await axios.get(`https://opentdb.com/api.php?amount=10&category=${cate}&difficulty=${diff}&type=multiple`)
@@ -111,18 +119,17 @@ const Quiz = () => {
     return (
         <div>
           <h1>Questions</h1>
-          
-          <form onClick={formHandler}>
-            {allQuestions}
-            <input type="submit" value="Submit"/>
-            
-          </form>     
+          <Timer value={start} onClick={() => onClick()} />
+      
+          <div className={`${setQ ? "questionHide" : "questionShow"}`}>
+            <form onClick={formHandler}>
+              {allQuestions}
+              <input type="submit" value="Submit"/>            
+            </form>
+          </div>    
           {score}   
         </div>
     );
 }
-
-
-
 
 export default Quiz;
