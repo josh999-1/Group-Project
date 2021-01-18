@@ -1,8 +1,12 @@
 //import e from "cors";
 import { useRef, useState, setState } from "react";
 import "./dropDown.css";
+import { Link, useHistory } from "react-router-dom";
+import Quiz from "./Quiz";
 
 //create category state
+let diff;
+let cate;
 
 const Select = () => {
   const [category, setCategory] = useState({
@@ -26,6 +30,15 @@ const Select = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const history = useHistory()
+  const handleClick = () => {
+    console.log(diff)
+    console.log(cate)
+    history.push("/quiz")
+  }
+  diff = difficulty.difficulty
+  cate = category.category 
 
   console.log(category.category);
   console.log(difficulty.difficulty);
@@ -163,12 +176,17 @@ const Select = () => {
         <p className="cat">{finalCat}</p>
         <p>Difficulty Level</p>
         <p className="dif">{finalDif}</p>
-        <button type="sumbit" className="quizBut">
+        
+        <button onClick={handleClick} type="button" className="quizBut" >
           Start Quiz
         </button>
+
       </div>
     </div>
   );
+  
 };
 
+export {diff, cate}
 export default Select;
+
