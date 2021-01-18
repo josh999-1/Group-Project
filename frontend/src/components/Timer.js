@@ -20,6 +20,7 @@ class Timer extends React.Component {
       time: this.state.time,
       start: Date.now() - this.state.time,
     });
+    this.props.handleClick();
     this.timer = setInterval(
       () =>
         this.setState({
@@ -34,6 +35,7 @@ class Timer extends React.Component {
   }
   resetTimer() {
     this.setState({ time: 0, isOn: false });
+    this.props.handleClick();
   }
   render() {
     let start =

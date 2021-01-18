@@ -10,7 +10,7 @@ const Quiz = () => {
   const difficulty = "easy";
 
   const [showQ, setQ] = useState(false);
-  const onClick = () => setQ(!showQ);
+  const handleClick = () => setQ(!showQ);
 
   useEffect(() => {
     fetchApi();
@@ -54,10 +54,11 @@ const Quiz = () => {
   return (
     <div>
       <h1>Questions</h1>
-      <Timer value={start} onClick={() => onClick()} />
+      <Timer value={start} handleClick={handleClick} />
 
-      <div className={`${setQ ? "questionHide" : "questionShow"}`}>
+      <div className={`${showQ ? "questionShow" : "questionHide"}`}>
         {allQuestions}
+        <button>Submit</button>
       </div>
     </div>
   );

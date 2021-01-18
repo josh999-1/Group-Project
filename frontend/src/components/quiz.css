@@ -5,3 +5,15 @@
 .questionShow {
   display: block;
 }
+
+body {
+  margin-left: 30px;
+}
+
+button {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  height: 50px;
+  width: 150px;
+}
