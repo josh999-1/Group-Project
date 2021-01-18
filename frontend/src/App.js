@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Home from "./components/Home";
 import Register from "./components/Register";
 import Login from "./components/Login";
@@ -21,6 +21,7 @@ function App() {
         <Route exact path="/results" component={Results} />
         <Route exact path="/table" component={Table} />
         <Route exact path="/score" component={Score} />
+        <Redirect from ='/register' to = "/select"/>
       </Switch>
     </BrowserRouter>
   );

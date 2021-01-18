@@ -1,5 +1,7 @@
 import React, {useRef,useState} from 'react'
+import { useHistory } from 'react-router-dom';
 import axios from 'axios'
+import './registerLogin.css'
 
 const Login = () => {
 
@@ -30,24 +32,27 @@ const Login = () => {
     const [isActive, setIsActive] = useState(false);
     const onClick = () => setIsActive(!isActive);
 
+    const history = useHistory();
+    const handleClick = () => history.push('/select');
+
     
     return (
          
         <div>
-            <button onClick={onClick} className="menu-trigger">
+            <button onClick={onClick}  className="menu-trigger">
                 Login User
             </button>
             
 
 
-            <form onSubmit={formHandler}ref={dropdownRef} className={`menu ${isActive ? "active" : "inactive"}`}  >
+            <form  onSubmit={formHandler}ref={dropdownRef} className={`menu ${isActive ? "active" : "inactive"}`}  >
                 <label>Email: </label>
                 <input type="email" name="userEmail" onChange={(e) => setEmail(e.target.value)} /> <br />
 
                 <label>Password</label> 
                 <input type="password" name="userPassword" onChange={(e) => setPassword(e.target.value)} /> <br />
 
-                <button type="submit">login</button>
+                <button onClick={handleClick} type="submit">login</button>
             </form>
 
             {backendResponse}
