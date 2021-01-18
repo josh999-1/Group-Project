@@ -24,4 +24,4 @@ const userScore = new mongoose.Schema({
 }
 );
 
-module.exports = mongoose.model('userScore', userScore);
+module.exports = mongoose.model('userScore',userScore);

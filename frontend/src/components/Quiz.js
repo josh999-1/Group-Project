@@ -6,15 +6,13 @@ import { start } from "./Timer";
 import { diff, cate } from "./Select"
 
 const Quiz = () => {
-    const [results, setResults] = useState([]);
-    const num = 11;
-    const difficulty = "easy";
 
     const [showQ, setQ] = useState(false);
     const onClick = () => setQ(!showQ);
 
     const [results, setResults] = useState([])
-    const [score, setScore] = useState("")
+    const [backendResponse, setBackendResponse] = useState("")
+    let score = ["none","none","none","none","none","none","none","none","none","none"]
     console.log(diff, cate)
 
     useEffect(() => {
@@ -27,11 +25,31 @@ const Quiz = () => {
         setResults(res.data.results)  
     }  
     
-    const formHandler = (event) => {
+    const formHandler = async (event) => {
+        console.log(event.target.value)
+        if (event.target.value == "correct"){
+            score[event.target.name] = "correct"
+        }
+        else if (event.target.value != "correct") {
+            score[event.target.name] = "incorrect"
+        }
         console.log(score)
+
+        const body = {
+            score: score
+        }
+        const config = {
+            headers: {
+            'Content-Type': 'application/json'
+            }
+        }
+
+        const response = await axios.post('/results', body, config)
+        setBackendResponse(response.data.message)
+        console.log(response)
+        
     }
-    
-    let count = 1
+    let count = -1
 
     const allQuestions = results.map((results) => {
         count = count + 1
@@ -40,12 +58,13 @@ const Quiz = () => {
         const incor2 = results.incorrect_answers[1]
         const incor3 = results.incorrect_answers[2]
         let num = Math.floor(Math.random()* 4) + 1
+        console.log(score)
 
         if (num == 1){
             return(
                 <div>
                     <h3>Question: {results.question}</h3>
-                    <input type="radio" value="answer1" name={count} />
+                    <input type="radio" value="correct" name={count} />
                     <label for="answer1">answer 1: {cor} </label> <br/>
                 
                     <input type="radio" value="answer2" name={count} />
@@ -58,6 +77,7 @@ const Quiz = () => {
                     <label for="answer4">answer 4: {incor3} </label> <br/>                
                 </div>
             )  
+            
         }
         else if (num == 2){
             return(
@@ -66,7 +86,7 @@ const Quiz = () => {
                     <input type="radio" value="answer1" name={count} />
                     <label for="answer1">answer 1: {incor1} </label> <br/>
                 
-                    <input type="radio" value="answer2" name={count} />
+                    <input type="radio" value="correct" name={count} />
                     <label for="answer2">answer 2: {cor} </label> <br/>
                 
                     <input type="radio" value="answer3" name={count}/>
@@ -87,7 +107,7 @@ const Quiz = () => {
                     <input type="radio" value="answer2" name={count} />
                     <label for="answer2">answer 2: {incor2} </label> <br/>
                 
-                    <input type="radio" value="answer3" name={count}/>
+                    <input type="radio" value="correct" name={count}/>
                     <label for="answer3">answer 3: {cor} </label> <br/>
                 
                     <input type="radio" value="answer4" name={count}/>
@@ -108,7 +128,7 @@ const Quiz = () => {
                     <input type="radio" value="answer3" name={count}/>
                     <label for="answer3">answer 3: {incor3} </label> <br/>
                 
-                    <input type="radio" value="answer4" name={count}/>
+                    <input type="radio" value="correct" name={count}/>
                     <label for="answer4">answer 4: {cor} </label> <br/>                
                 </div>
             )  
@@ -118,16 +138,17 @@ const Quiz = () => {
     console.log(score)
     return (
         <div>
-          <h1>Questions</h1>
-          <Timer value={start} onClick={() => onClick()} />
+            <h1>Questions</h1>
+
+            <Timer value={start} onClick={() => onClick()} />
       
-          <div className={`${setQ ? "questionHide" : "questionShow"}`}>
-            <form onClick={formHandler}>
-              {allQuestions}
-              <input type="submit" value="Submit"/>            
+            {/* <div className={`${setQ ? "questionHide" : "questionShow"}`}> */}
+            <form onChange={formHandler}>
+                {allQuestions}
+                <button type="submit" >Submit</button>           
             </form>
-          </div>    
-          {score}   
+            {/* </div>     */}
+            {backendResponse}   
         </div>
     );
 }

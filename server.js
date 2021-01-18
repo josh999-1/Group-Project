@@ -94,9 +94,14 @@ app.post("/login", async (req, res) => {
     }
 })
      
-// app.get('/score', (req, res) => {
-//     res.send("hello from nodejs")
-// })
+app.post('/results', (req, res) => {
+    console.log("reached backend")
+    console.log(req.body)
+
+    res.json({
+        message: "this is from backend"
+    })
+})
 
 app.post('/score', auth.isLoggedIn, async (req, res) => {    
 
