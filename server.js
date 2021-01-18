@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const User = require('./models/user')
+const userScore = require('./models/userScore')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs') 
 const auth = require('./middlewares/auth')
@@ -92,8 +93,42 @@ app.post("/login", async (req, res) => {
         })
     }
 })
+     
+app.post('/results', (req, res) => {
+    console.log("reached backend")
+    console.log(req.body)
+
+    res.json({
+        message: "this is from backend"
+    })
+})
+
+app.post('/score', auth.isLoggedIn, async (req, res) => {    
 
 
+
+       console.log(req.userFound)
+  
+       console.log(req.body)     
+       
+    await userScore.create({            
+
+
+        score: req.body.userScore,
+
+        time: req.body.userTime,
+
+        userid: userFound._id,
+
+        
+
+    });
+    res.json({
+        message: "score and time registered"
+
+    })
+
+})
 
 
 

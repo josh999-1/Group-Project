@@ -35,15 +35,17 @@ const Register = () => {
     const dropdownRef = useRef(null);
     const [isActive, setIsActive] = useState(false);
     const onClick = () => setIsActive(!isActive);
-
+    const onSubmit = (onSubmitProps) => {
+     onSubmitProps.resetForm()
+    }
     return (
         <div>
             <button onClick={onClick} className="menu-trigger">
                 Register User
             </button>
-            <nav ref={dropdownRef} className={`menu ${isActive ? "active" : "inactive"}`}></nav>
+            
 
-            <form onSubmit={formHandler}>
+            <form onSubmit={formHandler}ref={dropdownRef} className={`menu ${isActive ? "active" : "inactive"}`}    >
 
 
                 <label>User Name: </label>
@@ -55,8 +57,9 @@ const Register = () => {
                 <label>Password</label>
                 <input type="password" name="userPassword" onChange={(e) => setPassword(e.target.value)} /> <br />
 
-                <button type="submit">Register</button>
-
+                <button   type="submit" >Register</button>
+            
+             
 
             </form>
 
