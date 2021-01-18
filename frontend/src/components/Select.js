@@ -78,7 +78,10 @@ const Select = () => {
         <button onClick={onClick} className="menu-trigger">
           <span>Category</span>
         </button>
-        <nav ref={dropdownRef} className={`menu ${isActive ? "active" : "inactive"}`}>
+        <nav
+          ref={dropdownRef}
+          className={`menu ${isActive ? "active" : "inactive"}`}
+        >
           <ul>
             <li>
               <button name="category" value={9} onClick={setData}>
@@ -163,7 +166,7 @@ const Select = () => {
         <p className="cat">{finalCat}</p>
         <p>Difficulty Level</p>
         <p className="dif">{finalDif}</p>
-        <button type="sumbit" className="quizBut">
+        <button type="submit" className="quizBut">
           Start Quiz
         </button>
       </div>
