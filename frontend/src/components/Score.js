@@ -3,20 +3,17 @@ import axios from "axios";
 
 const Score = () => {
     
-    const [ score, setScore ] = useState("");
-    const [ time, setTime ] = useState("");
+    const [score, setScore ] = useState("");
+    const [time, setTime ] = useState("");
     const [backendResponse, setBackendResponse] = useState("")
     
 
     const formHandler = async (event) => {
-        event.preventDefault();
-
-       
+        event.preventDefault();      
         console.log(score)
         console.log(time)
 
-        const body = {
-            
+        const body = {        
             userScore: score,
             userTime: time
         }
@@ -28,8 +25,7 @@ const Score = () => {
         }
 
 
-        const response = await axios.post('/score', body, config)
-        
+        const response = await axios.post('/score', body, config)       
         setBackendResponse(response.data.message)
 
     }
