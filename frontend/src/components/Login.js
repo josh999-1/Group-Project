@@ -32,22 +32,22 @@ const Login = () => {
 
     
     return (
-        
+         
         <div>
             <button onClick={onClick} className="menu-trigger">
                 Login User
             </button>
-            <nav ref={dropdownRef} className={`menu ${isActive ? "active" : "inactive"}`}></nav>
+            
 
 
-            <form onSubmit={formHandler}>
+            <form onSubmit={formHandler}ref={dropdownRef} className={`menu ${isActive ? "active" : "inactive"}`}  >
                 <label>Email: </label>
                 <input type="email" name="userEmail" onChange={(e) => setEmail(e.target.value)} /> <br />
 
-                <label>Password</label>
+                <label>Password</label> 
                 <input type="password" name="userPassword" onChange={(e) => setPassword(e.target.value)} /> <br />
 
-                <button type="submit">Register</button>
+                <button type="submit">login</button>
             </form>
 
             {backendResponse}
