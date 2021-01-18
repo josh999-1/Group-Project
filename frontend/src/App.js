@@ -6,6 +6,7 @@ import Quiz from "./components/Quiz";
 import Select from "./components/Select";
 import Results from "./components/Results";
 import Table from "./components/Table";
+import Score from "./components/Score";
 import "./App.css";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/select" component={Select} />
         <Route exact path="/results" component={Results} />
         <Route exact path="/table" component={Table} />
+        <Route exact path="/score" component={Score} />
       </Switch>
     </BrowserRouter>
   );

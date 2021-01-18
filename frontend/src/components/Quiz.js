@@ -121,4 +121,8 @@ const Quiz = () => {
         </div>
     );
 }
+
+
+
+
 export default Quiz;
