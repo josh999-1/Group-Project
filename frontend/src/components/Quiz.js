@@ -58,7 +58,7 @@ const Quiz = () => {
 
       <div className={`${showQ ? "questionShow" : "questionHide"}`}>
         {allQuestions}
-        <button>Submit</button>
+        <button type="submit">Submit</button>
       </div>
     </div>
   );
