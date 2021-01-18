@@ -6,7 +6,8 @@ import { diff, cate } from "./Select"
 const Quiz = () => {
 
     const [results, setResults] = useState([])
-    const [score, setScore] = useState("")
+    const [score, setScore] = useState([])
+    const [answer, setAnswer] = useState("")
     console.log(diff, cate)
 
     useEffect(() => {
@@ -21,8 +22,8 @@ const Quiz = () => {
     
     const formHandler = (event) => {
         console.log(score)
+        console.log(event.target.value)
     }
-    
     let count = 1
 
     const allQuestions = results.map((results) => {
@@ -34,6 +35,7 @@ const Quiz = () => {
         let num = Math.floor(Math.random()* 4) + 1
 
         if (num == 1){
+            console.log(score)
             return(
                 <div>
                     <h3>Question: {results.question}</h3>
@@ -50,6 +52,7 @@ const Quiz = () => {
                     <label for="answer4">answer 4: {incor3} </label> <br/>                
                 </div>
             )  
+            
         }
         else if (num == 2){
             return(
@@ -112,11 +115,12 @@ const Quiz = () => {
         <div>
           <h1>Questions</h1>
           
-          <form onClick={formHandler}>
+          <form onSubmit={formHandler.bind(this)}>
             {allQuestions}
-            <input type="submit" value="Submit"/>
-            
-          </form>     
+            <button type="submit">Submit</button>           
+          </form> 
+
+          <h3>Score:</h3>    
           {score}   
         </div>
     );
