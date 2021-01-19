@@ -1,8 +1,8 @@
 //import e from "cors";
-import { useRef, useState, setState } from "react";
+import { useRef, useState } from "react";
 import "./dropDown.css";
-import { Link, useHistory } from "react-router-dom";
-import Quiz from "./Quiz";
+import {  useHistory } from "react-router-dom";
+
 
 //create category state
 let diff;
@@ -53,33 +53,33 @@ const Select = () => {
   let finalCat = "";
   let finalDif = "";
 
-  if (category.category == 9) {
+  if (category.category === 9) { 
     finalCat = "General Knowledge";
-  } else if (category.category == 18) {
+  } else if (category.category === 18) {
     finalCat = "Science: Computers";
-  } else if (category.category == 15) {
+  } else if (category.category === 15) {
     finalCat = "Entertainment: Video Games";
-  } else if (category.category == 22) {
+  } else if (category.category === 22) {
     finalCat = "Geography";
-  } else if (category.category == 23) {
+  } else if (category.category === 23) {
     finalCat = "History";
-  } else if (category.category == 25) {
+  } else if (category.category === 25) {
     finalCat = "Art";
-  } else if (category.category == 28) {
+  } else if (category.category === 28) {
     finalCat = "Vehicles";
-  } else if (category.category == 27) {
+  } else if (category.category === 27) {
     finalCat = "Animals";
-  } else if (category.category == 21) {
+  } else if (category.category === 21) {
     finalCat = "Sports";
-  } else if (category.category == 20) {
+  } else if (category.category === 20) {
     finalCat = "Mythology";
   }
 
-  if (difficulty.difficulty == "easy") {
+  if (difficulty.difficulty === "easy") {
     finalDif = "Easy";
-  } else if (difficulty.difficulty == "medium") {
+  } else if (difficulty.difficulty === "medium") {
     finalDif = "Medium";
-  } else if (difficulty.difficulty == "hard") {
+  } else if (difficulty.difficulty === "hard") {
     finalDif = "Hard";
   }
 

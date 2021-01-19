@@ -41,19 +41,19 @@ class Timer extends React.Component {
   }
   render() {
     let start =
-      this.state.time == 0 ? (
+      this.state.time === 0 ? (
         <button onClick={this.startTimer}>start</button>
       ) : null;
     let stop =
-      this.state.time == 0 || !this.state.isOn ? null : (
+      this.state.time === 0 || !this.state.isOn ? null : (
         <button onClick={this.stopTimer}>stop</button>
       );
     let resume =
-      this.state.time == 0 || this.state.isOn ? null : (
+      this.state.time === 0 || this.state.isOn ? null : (
         <button onClick={this.startTimer}>resume</button>
       );
     let reset =
-      this.state.time == 0 || this.state.isOn ? null : (
+      this.state.time === 0 || this.state.isOn ? null : (
         <button onClick={this.resetTimer}>reset</button>
       );
     urTime = ms(this.state.time)
