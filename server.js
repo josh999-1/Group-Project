@@ -98,9 +98,26 @@ app.post("/login", async (req, res) => {
     }
 })
      
-app.post('/results', (req, res) => {
+app.post('/results', auth.isLoggedIn, async (req, res) => {
     console.log("reached backend")
     console.log(req.body)
+    const scoreArr = req.body.score
+    const time = req.body.time
+    let score = 0
+
+    for (let x=0; x < scoreArr.length; x++) {
+        if (scoreArr[x] == "correct"){
+            score = score + 1
+        }
+        
+    }
+    console.log(score)
+
+    await userScore.create({
+        score: score,
+        time: time,
+        userid: req.userFound._id
+    })
 
     res.json({
         message: "this is from backend"
