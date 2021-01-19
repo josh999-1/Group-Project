@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs') 
 const auth = require('./middlewares/auth')
 const axios = require('axios')
+const cookieParser = require('cookie-parser')
 
 const app = express();
 dotenv.config({path:'./.env'})
@@ -15,6 +16,7 @@ dotenv.config({path:'./.env'})
 app.use(express.urlencoded({extended: false}));
 app.use(express.json({extended: false}));
 app.use(cors())
+app.use(cookieParser())
 
 mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,
@@ -96,9 +98,26 @@ app.post("/login", async (req, res) => {
     }
 })
      
-app.post('/results', (req, res) => {
+app.post('/results', auth.isLoggedIn, async (req, res) => {
     console.log("reached backend")
     console.log(req.body)
+    const scoreArr = req.body.score
+    const time = req.body.time
+    let score = 0
+
+    for (let x=0; x < scoreArr.length; x++) {
+        if (scoreArr[x] == "correct"){
+            score = score + 1
+        }
+        
+    }
+    console.log(score)
+
+    await userScore.create({
+        score: score,
+        time: time,
+        userid: req.userFound._id
+    })
 
     res.json({
         message: "this is from backend"
