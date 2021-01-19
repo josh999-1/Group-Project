@@ -4,10 +4,9 @@ const { stringify } = require('querystring');
 const userScore = new mongoose.Schema({
     score: {
         type: String,
-        required: true
-        
+        required: true       
     },
-     time: {
+    time: {
         type: String,
         required: true
 
@@ -16,12 +15,7 @@ const userScore = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: false,
         ref:'user'
-
-    }
-    
-}, {
-    timestamps: true
-}
-);
+    }  
+},{timestamps: true});
 
 module.exports = mongoose.model('userScore',userScore);
