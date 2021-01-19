@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Timer from "./Timer";
 import "./quiz.css";
+import { useHistory} from 'react-router-dom';
 import { start } from "./Timer";
 import { diff, cate } from "./Select";
 
@@ -129,6 +130,9 @@ const Quiz = () => {
     }
   });
 
+  const history = useHistory();
+  const handleClick2 = () => history.push('/table');
+
   return (
     <div>
       <h1>Questions</h1>
@@ -137,11 +141,15 @@ const Quiz = () => {
       <div className={`${showQ ? "questionShow" : "questionHide"}`}>
         <form onChange={formHandler}>
           {allQuestions}
-          <button type="submit">Submit</button>
+          <button onClick={handleClick2} type="submit">Submit</button>
         </form>
+  
       </div>
     </div>
   );
 };
+
+
+
 
 export default Quiz;
