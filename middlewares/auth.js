@@ -2,11 +2,12 @@ const { promisify } = require("util");
 const jwt = require('jsonwebtoken');;
 const User = require('../models/user');
 
-exports.isLoggedIn = async(req, res, next) => {
+exports.isLoggedIn = async (req, res, next) => {
     console.log("Checking if user is logged in")
 
-    if (req.cookies.jwt) {
-        const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
+    if (req.cookies.jwt) {      
+
+        const decoded = await jwt.verify(req.cookies.jwt, process.env.JWT_SECRET);
         console.log("My token decoded")
         console.log(decoded)
 
@@ -15,6 +16,8 @@ exports.isLoggedIn = async(req, res, next) => {
 
     next()
 }
+
+
 
 exports.logout = (req, res, next) => {
 

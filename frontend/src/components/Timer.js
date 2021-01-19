@@ -1,6 +1,8 @@
 import { Component } from "react";
 import "./quiz.css";
 
+let urTime
+
 const React = require("react");
 const ms = require("pretty-ms");
 class Timer extends React.Component {
@@ -57,6 +59,8 @@ class Timer extends React.Component {
       this.state.time == 0 || this.state.isOn ? null : (
         <button onClick={this.resetTimer}>reset</button>
       );
+    urTime = ms(this.state.time)
+    
     return (
       <div>
         <h3>Timer: {ms(this.state.time)}</h3>
@@ -69,6 +73,9 @@ class Timer extends React.Component {
     );
   }
 }
+
+
+export {urTime}
 export default Timer;
 
 export class start extends Component {
