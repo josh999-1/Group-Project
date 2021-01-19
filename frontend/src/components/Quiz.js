@@ -146,7 +146,6 @@ const Quiz = () => {
           {allQuestions}
         </form>
   
-        </form>
         <form onSubmit={sendBackend}>   
           <button onClick={handleClick2} type="submit">Submit</button>
         </form>
