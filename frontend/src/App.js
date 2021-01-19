@@ -7,7 +7,6 @@ import Select from "./components/Select";
 import Results from "./components/Results";
 import Table from "./components/Table";
 import Score from "./components/Score";
-import "./App.css";
 
 function App() {
   return (
@@ -21,7 +20,7 @@ function App() {
         <Route exact path="/results" component={Results} />
         <Route exact path="/table" component={Table} />
         <Route exact path="/score" component={Score} />
-        <Redirect from ='/register' to = "/select"/>
+        <Redirect from="/register" to="/select" />
       </Switch>
     </BrowserRouter>
   );

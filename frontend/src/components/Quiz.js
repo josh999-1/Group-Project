@@ -130,14 +130,16 @@ const Quiz = () => {
   });
 
   return (
-    <div>
+    <div className="allQ">
       <h1>Questions</h1>
       <Timer value={start} handleClick={handleClick} />
 
       <div className={`${showQ ? "questionShow" : "questionHide"}`}>
         <form onChange={formHandler}>
           {allQuestions}
-          <button type="submit">Submit</button>
+          <button type="submit" className="sub">
+            Submit
+          </button>
         </form>
       </div>
     </div>
