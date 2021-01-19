@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Timer from "./Timer";
 import "./quiz.css";
+import { useHistory } from 'react-router-dom';
 import { start, urTime } from "./Timer";
 import { diff, cate } from "./Select";
 import Results from "./Results"
@@ -131,6 +132,9 @@ const Quiz = () => {
       );
     }
   });
+  const history = useHistory();
+  const handleClick2 = () => history.push('/table');
+
   return (
     <div>
       <h1>Questions</h1>
@@ -141,13 +145,18 @@ const Quiz = () => {
         <form onChange={formHandler}>
           {allQuestions}
         </form>
-        <form onSubmit={sendBackend}>
-          <button type="submit">Submit</button>         
+  
+        </form>
+        <form onSubmit={sendBackend}>   
+          <button onClick={handleClick2} type="submit">Submit</button>
         </form>
         {backendResponse}
       </div>
     </div>
   );
 };
+
+
+
 
 export default Quiz;

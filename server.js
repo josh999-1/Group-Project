@@ -21,7 +21,7 @@ app.use(cookieParser())
 mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useFindAndModify: true,
+    useFindAndModify: true,  
     useUnifiedTopology: true
 }).then(() => console.log("MongoDB is connected"))
 
@@ -124,32 +124,32 @@ app.post('/results', auth.isLoggedIn, async (req, res) => {
     })
 })
 
-app.post('/score', auth.isLoggedIn, async (req, res) => {    
-
-
-
-       console.log(req.userFound)
-  
-       console.log(req.body)     
-       
-    await userScore.create({            
-
-
-        score: req.body.userScore,
-
-        time: req.body.userTime,
-
-        userid: userFound._id,
-
-        
-
-    });
-    res.json({
-        message: "score and time registered"
-
+app.post('/score', auth.isLoggedIn, async (req, res) => {
+    console.log("reached backend")
+    console.log(req.body.score)
+    const scoreArr = req.body.score
+    let score = 0
+    let time = 5
+    
+    for (let x= 0; x < scoreArr.length; x++) {
+    if (scoreArr[x] == "correct"){
+    score = score + 1
+    }
+    
+    }
+    console.log(score)
+    
+    await userScore.create({
+    score: score,
+    time: time
     })
+    
+    res.json({
+    message: "this is from backend"
+    })
+    })
+    
 
-})
 
 
 
