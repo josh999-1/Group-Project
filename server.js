@@ -62,6 +62,7 @@ app.post('/register', async(req, res) => {
         res.json({
             message: "user was registered"
         })
+        
     }
     else{
         res.json({
@@ -88,6 +89,7 @@ app.post("/login", async (req, res) => {
         res.json({
             message: "user logged in"
         })
+    
     }
     else{
         res.json({

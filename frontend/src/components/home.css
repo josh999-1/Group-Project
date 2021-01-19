@@ -1,0 +1,10 @@
+
+.homeStyle{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 500px;
+    margin-top: 150px;
+
+}

@@ -14,6 +14,11 @@ class Table extends Component {
     ],
   };
 
+  handleClick() {
+    this.props.history.push('/select');
+  }
+   
+
   componentDidMount() {
     let data = this.state.scores;
     let sorted = data.sort((a, b) => {
@@ -43,7 +48,7 @@ class Table extends Component {
         })}
         <br />
 
-        <button>Try Again</button>
+        <button onClick={() => this.handleClick()} >Try Again</button>
 
         <button>Logout</button>
       </div>
