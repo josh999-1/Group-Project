@@ -31,14 +31,14 @@ const Select = () => {
     });
   };
 
-  const history = useHistory()
+  const history = useHistory();
   const handleClick = () => {
-    console.log(diff)
-    console.log(cate)
-    history.push("/quiz")
-  }
-  diff = difficulty.difficulty
-  cate = category.category 
+    console.log(diff);
+    console.log(cate);
+    history.push("/quiz");
+  };
+  diff = difficulty.difficulty;
+  cate = category.category;
 
   console.log(category.category);
   console.log(difficulty.difficulty);
@@ -86,10 +86,10 @@ const Select = () => {
   return (
     <div className="main">
       <h2>Welcome user</h2>
-      <h1>Quiz Selection</h1>
+
       <div className="menu-container">
         <button onClick={onClick} className="menu-trigger">
-          <span>Category</span>
+          <span>Select Category</span>
         </button>
         <nav
           ref={dropdownRef}
@@ -151,7 +151,7 @@ const Select = () => {
       </div>
       <div className="menu-container2">
         <button onClick={onClickDif} className="menu-trigger2">
-          <span>Difficulty</span>
+          <span>Select Difficulty</span>
         </button>
         <nav
           ref={dropdownRef}
@@ -175,21 +175,21 @@ const Select = () => {
             </li>
           </ul>
         </nav>
+      </div>
+      <div className="options">
+        <h2>Quiz Selection</h2>
         <p>You have selected</p>
         <p className="cat">{finalCat}</p>
         <p>Difficulty Level</p>
         <p className="dif">{finalDif}</p>
 
-        <button onClick={handleClick} type="button" className="quizBut" >
+        <button onClick={handleClick} type="button" className="quizBut">
           Start Quiz
         </button>
-
       </div>
     </div>
   );
-  
 };
 
-export {diff, cate}
+export { diff, cate };
 export default Select;
-
