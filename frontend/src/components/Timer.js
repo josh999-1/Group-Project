@@ -1,4 +1,5 @@
 import { Component } from "react";
+import "./quiz.css";
 
 let urTime
 
@@ -42,7 +43,9 @@ class Timer extends React.Component {
   render() {
     let start =
       this.state.time == 0 ? (
-        <button onClick={this.startTimer}>start</button>
+        <button onClick={this.startTimer} className="start">
+          Start
+        </button>
       ) : null;
     let stop =
       this.state.time == 0 || !this.state.isOn ? null : (
@@ -60,7 +63,7 @@ class Timer extends React.Component {
     
     return (
       <div>
-        <h3>timer: {ms(this.state.time)}</h3>
+        <h3>Timer: {ms(this.state.time)}</h3>
         {start}
         {resume}
         {stop}

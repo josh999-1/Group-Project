@@ -136,7 +136,7 @@ const Quiz = () => {
   const handleClick2 = () => history.push('/table');
 
   return (
-    <div>
+    <div className="allQ">
       <h1>Questions</h1>
 
       <Timer value={start} handleClick={handleClick} />
@@ -147,7 +147,7 @@ const Quiz = () => {
         </form>
   
         <form onSubmit={sendBackend}>   
-          <button onClick={handleClick2} type="submit">Submit</button>
+          <button onClick={handleClick2} type="submit" className="sub">Submit</button>
         </form>
         {backendResponse}
       </div>
