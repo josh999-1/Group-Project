@@ -5,7 +5,6 @@ import "./quiz.css";
 import { useHistory } from 'react-router-dom';
 import { start, urTime } from "./Timer";
 import { diff, cate } from "./Select";
-import Results from "./Results"
 
 const Quiz = () => {
   const [showQ, setQ] = useState(false);
@@ -39,6 +38,7 @@ const Quiz = () => {
     console.log(score);
     console.log(urTime)
   };
+  const history = useHistory();
 
   const sendBackend = async (event) => {
     console.log(urTime)
@@ -54,7 +54,8 @@ const Quiz = () => {
     console.log(score)
     console.log(event.value)
 
-    if (score.length == 10){
+    if (score.length == 10){   
+      history.push('/table');
       const response = await axios.post("/results", body, config);
       setBackendResponse(response.data.message);
       console.log(response);
@@ -132,9 +133,6 @@ const Quiz = () => {
       );
     }
   });
-  const history = useHistory();
-  const handleClick2 = () => history.push('/table');
-
   return (
     <div>
       <h1>Questions</h1>
@@ -146,9 +144,8 @@ const Quiz = () => {
           {allQuestions}
         </form>
   
-        </form>
         <form onSubmit={sendBackend}>   
-          <button onClick={handleClick2} type="submit">Submit</button>
+          <button type="submit">Submit</button>
         </form>
         {backendResponse}
       </div>

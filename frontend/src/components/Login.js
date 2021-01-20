@@ -9,6 +9,8 @@ const Login = () => {
     const [password, setPassword] = useState("")
     const [backendResponse, setBackendResponse] = useState("")
 
+    const history = useHistory();
+
     const formHandler = async (event) => {
         event.preventDefault()
         console.log(email)
@@ -23,7 +25,7 @@ const Login = () => {
             'Content-Type': 'application/json'
             }
         }
-
+        history.push('/select');
         const response = await axios.post('/login', body, config)
         setBackendResponse(response.data.message)
         console.log(response)
@@ -31,11 +33,7 @@ const Login = () => {
     const dropdownRef = useRef(null);
     const [isActive, setIsActive] = useState(false);
     const onClick = () => setIsActive(!isActive);
-
-    const history = useHistory();
-    const handleClick = () => history.push('/select');
-
-    
+ 
     return (
          
         <div>
@@ -43,8 +41,6 @@ const Login = () => {
                 Login User
             </button>
             
-
-
             <form  onSubmit={formHandler}ref={dropdownRef} className={`menu ${isActive ? "active" : "inactive"}`}  >
                 <label>Email: </label>
                 <input type="email" name="userEmail" onChange={(e) => setEmail(e.target.value)} /> <br />
@@ -52,7 +48,7 @@ const Login = () => {
                 <label>Password</label> 
                 <input type="password" name="userPassword" onChange={(e) => setPassword(e.target.value)} /> <br />
 
-                <button onClick={handleClick} type="submit">login</button>
+                <button type="submit">login</button>
             </form>
 
             {backendResponse}
