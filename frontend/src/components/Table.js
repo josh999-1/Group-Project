@@ -1,6 +1,20 @@
 import React, { Component, useEffect, useState } from "react";
 import axios from 'axios'
 import "./table.css";
+<<<<<<< HEAD
+import Confetti from "./Confetti";
+
+class Table extends Component {
+  state = {
+    scores: [
+      { name: "John", score: 8, time: 120 },
+      { name: "Rodger", score: 10, time: 140 },
+      { name: "Lola", score: 5, time: 180 },
+      { name: "Mike", score: 5, time: 140 },
+      { name: "Chris", score: 10, time: 135 },
+    ],
+  };
+=======
 import makeConfetti from "./Confetti";
 import results from "./Results";
 import { useHistory } from "react-router-dom";
@@ -9,6 +23,7 @@ const Table = () => {
   const [scores, setScores] = useState([])
   const [curScore, setcurScore] = useState({})
   const [name, setName] = useState("")
+>>>>>>> 71fdfca9c39e1619d27b81bf2c72a6e1848cdf7f
 
   const fetchData = async () => {
     const response = await axios.get('/table')
@@ -40,8 +55,22 @@ const Table = () => {
   
     return (
       <div className="mainTable">
-        <makeConfetti />
         <h1 className="scoreboard">Scoreboard</h1>
+<<<<<<< HEAD
+        <Confetti />
+        <h3>Congratulations user, you got 5/10 correct in 1m 35s. </h3>
+        <h3>Check your how you did on our scoreboard below</h3>
+        <div className="titles">
+          <h3 className="userName">Username</h3>
+          <h3 className="score">Score</h3>
+          <h3 className="time">Time</h3>
+        </div>
+        {scores.map((person) => {
+          return (
+            <div className="table">
+              <div className="name">
+                <p>{person.name}</p>
+=======
         <p>Congratulations {name}, you got {curScore.score}/10 in {curScore.time}</p>
           <div className="titles">
             <h3 className="userName">Username</h3>
@@ -56,6 +85,7 @@ const Table = () => {
                 </div>
                 <p className="userScore">{scores.score}</p>
                 <p className="userTime">{scores.time}</p>
+>>>>>>> 71fdfca9c39e1619d27b81bf2c72a6e1848cdf7f
               </div>
             );
           })}
@@ -71,6 +101,9 @@ const Table = () => {
   )
 }
 
+<<<<<<< HEAD
+export default Table;
+=======
 export default Table
 
 
@@ -134,3 +167,4 @@ export default Table
 // <p>
 //                 {person.name} - {person.score} - {person.time}
 //               </p>
+>>>>>>> 71fdfca9c39e1619d27b81bf2c72a6e1848cdf7f
