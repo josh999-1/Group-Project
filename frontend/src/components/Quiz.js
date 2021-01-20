@@ -12,7 +12,6 @@ const Quiz = () => {
   const handleClick = () => setQ(!showQ);
 
   const [results, setResults] = useState([]);
-  const [backendResponse, setBackendResponse] = useState("");
   let score = [];
   console.log(diff, cate);
 
@@ -59,11 +58,10 @@ const Quiz = () => {
     console.log(event.value);
 
     if (score.length == 10){   
-      history.push('/table');
-      const response = await axios.post("/results", body, config);
-      setBackendResponse(response.data.message);
-      console.log(response);
-    } else {
+      history.push('/results');
+      await axios.post("/results", body, config);
+    } 
+    else {
       console.log("not all answered");
     }
   };
@@ -150,7 +148,6 @@ const Quiz = () => {
         <form onSubmit={sendBackend}>   
           <button type="submit" className="sub" confettiClick={confettiClick} >Submit</button>
         </form>
-        {backendResponse}
       </div>
     </div>
   );
