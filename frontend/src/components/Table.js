@@ -24,11 +24,13 @@ const Table = () => {
     fetchData();
   }, []);
 
-  const history = useHistory();
-  const handleClick = () => {
-    history.push("/select");
-  };
-  console.log(scores);
+  const history = useHistory()
+  const handleClick = async () => {
+    history.push('/select');
+    await axios.get('/tryAgain')
+  }
+  console.log(scores)
+  
   const componentDid = () => {
     let data = scores;
     console.log(data);
