@@ -140,13 +140,12 @@ const Quiz = () => {
       <Timer value={start} handleClick={handleClick} />
 
       <div className={`${showQ ? "questionShow" : "questionHide"}`}>
+        <form onChange={formHandler}>{allQuestions}</form>
 
-        <form onChange={formHandler}>
-          {allQuestions}
-        </form>
-  
-        <form onSubmit={sendBackend}>   
-          <button type="submit" className="sub">Submit</button>
+        <form onSubmit={sendBackend}>
+          <button type="submit" className="sub">
+            Submit
+          </button>
         </form>
       </div>
     </div>
