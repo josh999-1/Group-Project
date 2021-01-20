@@ -58,8 +58,8 @@ const Quiz = () => {
     console.log(score);
     console.log(event.value);
 
-    if (score.length == 10){   
-      history.push('/table');
+    if (score.length == 10) {
+      history.push("/table");
       const response = await axios.post("/results", body, config);
       setBackendResponse(response.data.message);
       console.log(response);
@@ -143,12 +143,13 @@ const Quiz = () => {
       <Timer value={start} handleClick={handleClick} />
 
       <div className={`${showQ ? "questionShow" : "questionHide"}`}>
+
         <form onChange={formHandler}>
           {allQuestions}
         </form>
   
         <form onSubmit={sendBackend}>   
-          <button type="submit" className="sub" confettiClick={confettiClick} >Submit</button>
+          <button type="submit" className="sub">Submit</button>
         </form>
         {backendResponse}
       </div>
