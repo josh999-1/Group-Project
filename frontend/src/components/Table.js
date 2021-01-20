@@ -40,7 +40,6 @@ const Table = () => {
   
     return (
       <div className="mainTable">
-        <makeConfetti />
         <h1 className="scoreboard">Scoreboard</h1>
         <Confetti />
         <p>Congratulations {name}, you got {curScore.score}/10 in {curScore.time}</p>
