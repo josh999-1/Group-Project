@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { stringify } = require('querystring');
 
 const userScore = new mongoose.Schema({
     score: {
@@ -9,11 +8,10 @@ const userScore = new mongoose.Schema({
     time: {
         type: String,
         required: true
-
-     },
+    },
     userid: {
         type: mongoose.Schema.Types.ObjectId,
-        required: false,
+        required: true,
         ref:'user'
     }  
 },{timestamps: true});
