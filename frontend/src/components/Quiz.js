@@ -5,10 +5,7 @@ import "./quiz.css";
 import { useHistory } from "react-router-dom";
 import { start, urTime } from "./Timer";
 import { diff, cate } from "./Select";
-<<<<<<< HEAD
-=======
 import { confettiClick } from "./Confetti";
->>>>>>> 71fdfca9c39e1619d27b81bf2c72a6e1848cdf7f
 
 const Quiz = () => {
   const [showQ, setQ] = useState(false);
@@ -29,6 +26,10 @@ const Quiz = () => {
     );
     console.log(res.data.results);
     setResults(res.data.results);
+  };
+
+  const parse = () => {
+    JSON.parse(setResults.replace(/&quot;/g, '"'));
   };
 
   const formHandler = async (event) => {
@@ -142,21 +143,12 @@ const Quiz = () => {
       <Timer value={start} handleClick={handleClick} />
 
       <div className={`${showQ ? "questionShow" : "questionHide"}`}>
-<<<<<<< HEAD
-        <form onChange={formHandler}>{allQuestions}</form>
-
-        <form onSubmit={sendBackend}>
-          <button onClick={handleClick2} type="submit" className="sub">
-            Submit
-          </button>
-=======
         <form onChange={formHandler}>
           {allQuestions}
         </form>
   
         <form onSubmit={sendBackend}>   
           <button type="submit" className="sub" confettiClick={confettiClick} >Submit</button>
->>>>>>> 71fdfca9c39e1619d27b81bf2c72a6e1848cdf7f
         </form>
         {backendResponse}
       </div>
