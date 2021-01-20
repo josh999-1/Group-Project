@@ -7,12 +7,19 @@ import { useHistory } from "react-router-dom";
 
 const Table = () => {
   const [scores, setScores] = useState([])
+  const [curScore, setcurScore] = useState({})
+  const [name, setName] = useState("")
 
   const fetchData = async () => {
     const response = await axios.get('/table')
     console.log(response.data.leaderBoard)
     setScores(response.data.leaderBoard)
 
+    console.log(response.data.curScore)
+    setcurScore(response.data.curScore)
+
+    setName(response.data.curScore.userid.name)
+  
   }
   useEffect(() => {
     fetchData()
@@ -36,6 +43,7 @@ const Table = () => {
       <div className="mainTable">
         <makeConfetti />
         <h1 className="scoreboard">Scoreboard</h1>
+        <p>Congratulations {name}, you got {curScore.score}/10 in {curScore.time}</p>
           <div className="titles">
             <h3 className="userName">Username</h3>
             <h3 className="score">Score</h3>

@@ -129,6 +129,10 @@ app.post('/results', auth.isLoggedIn, async (req, res) => {
         expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPRESS1 * 24 * 60 * 60 * 1000), httpOnly: true
     }
     res.cookie('jwt1', token, cookieOptions)  
+
+    res.json({
+        message: "this is from backend"
+    })
 })
 
 app.get('/table', auth.isScore, async (req, res) => {
@@ -145,11 +149,11 @@ app.get('/table', auth.isScore, async (req, res) => {
 
 })
 
-// app.get('/tryAgain', auth.logoutScore, (req, res) => {
-//     res.json({
-//         message: "score logged out"
-//     })
-// })
+app.get('/tryAgain', auth.logoutScore, (req, res) => {
+    res.json({
+        message: "score logged out"
+    })
+})
 
 app.listen( 5000, () => {
     console.log("Server running on port 5000")
