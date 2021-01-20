@@ -5,7 +5,6 @@ import "./quiz.css";
 import { useHistory } from "react-router-dom";
 import { start, urTime } from "./Timer";
 import { diff, cate } from "./Select";
-import { confettiClick } from "./Confetti";
 
 const Quiz = () => {
   const [showQ, setQ] = useState(false);
