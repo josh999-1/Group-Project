@@ -1,6 +1,7 @@
 import React, { Component, useEffect, useState } from "react";
 import axios from 'axios'
 import "./table.css";
+import makeConfetti from "./Confetti";
 import results from "./Results";
 import { useHistory } from "react-router-dom";
 
@@ -38,32 +39,33 @@ const Table = () => {
     // setScores({ scores: sorted });
   
     return (
-      <div className="main">
-        <h1>Scoreboard</h1>
+      <div className="mainTable">
+        <makeConfetti />
+        <h1 className="scoreboard">Scoreboard</h1>
         <p>Congratulations {name}, you got {curScore.score}/10 in {curScore.time}</p>
           <div className="titles">
-            <h3>Username</h3>
-            <h3>Score</h3>
-            <h3>Time</h3>
+            <h3 className="userName">Username</h3>
+            <h3 className="score">Score</h3>
+            <h3 className="time">Time</h3>
           </div>
           {scores.map((scores) => {
             return (
               <div className="table">
-                <p>{scores.userid.name}</p>
-                <p>{scores.score}</p>
-                <p>{scores.time}</p>
+                <div className="name">
+                  <p>{scores.userid.name}</p>
+                </div>
+                <p className="userScore">{scores.score}</p>
+                <p className="userTime">{scores.time}</p>
               </div>
             );
           })}
           <br />  
         
         <button onClick={handleClick} >Try Again</button>      
-        <button>Logout</button>
+        <button className="logout">Logout</button>
      </div>
     );
   }
-  
-
   return(
     <h1>{componentDid()}</h1>
   )

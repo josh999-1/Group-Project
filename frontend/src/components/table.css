@@ -2,12 +2,61 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-right: 1000px;
+  margin-right: 500px;
+  border: solid;
+
+  padding: 10px;
 }
 
 .table {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-right: 1000px;
+  margin-right: 500px;
+  border: solid;
+  padding: 10px;
+  border-top: 0px;
 }
+
+.mainTable {
+  margin-left: 500px;
+  margin-top: 40px;
+}
+
+.scoreboard {
+  position: relative;
+  left: 130px;
+}
+
+.tryAgain {
+  color: white;
+  background-color: #074fad;
+  height: 60px;
+  width: 150px;
+}
+
+.logout {
+  color: white;
+  background-color: #074fad;
+  height: 60px;
+  width: 150px;
+  position: relative;
+  left: 110px;
+  margin-bottom: 100px;
+}
+
+/* .userName {
+  border-right: solid;
+}
+
+.score {
+  border-right: solid;
+}
+
+.name {
+  border-right: solid;
+}
+
+.userScore {
+  border-right: solid;
+} */
