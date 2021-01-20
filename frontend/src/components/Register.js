@@ -11,6 +11,8 @@ const Register = () => {
     const [password, setPassword] = useState("")
     const [backendResponse, setBackendResponse] = useState("")
 
+    const history = useHistory();
+
     const formHandler = async (event) => {
         event.preventDefault()
         console.log(name)
@@ -28,7 +30,7 @@ const Register = () => {
             'Content-Type': 'application/json'
             }
         }
-
+        history.push('/select');
         const response = await axios.post('/register', body, config)
         setBackendResponse(response.data.message)
         console.log(response)
@@ -37,11 +39,6 @@ const Register = () => {
     const dropdownRef = useRef(null);
     const [isActive, setIsActive] = useState(false);
     const onClick = () => setIsActive(!isActive);
-
-  
-    const history = useHistory();
-    const handleClick = () => history.push('/select');
-    
 
     return (
         <div >
@@ -62,7 +59,7 @@ const Register = () => {
                 <label>Password</label>
                 <input type="password" name="userPassword" onChange={(e) => setPassword(e.target.value)} /> <br />
 
-                <button onClick={handleClick} >Register</button>
+                <button>Register</button>
             
              
 

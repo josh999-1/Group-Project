@@ -5,6 +5,10 @@ import "./quiz.css";
 import { useHistory } from "react-router-dom";
 import { start, urTime } from "./Timer";
 import { diff, cate } from "./Select";
+<<<<<<< HEAD
+=======
+import { confettiClick } from "./Confetti";
+>>>>>>> 71fdfca9c39e1619d27b81bf2c72a6e1848cdf7f
 
 const Quiz = () => {
   const [showQ, setQ] = useState(false);
@@ -37,6 +41,7 @@ const Quiz = () => {
     console.log(score);
     console.log(urTime);
   };
+  const history = useHistory();
 
   const sendBackend = async (event) => {
     console.log(urTime);
@@ -52,7 +57,8 @@ const Quiz = () => {
     console.log(score);
     console.log(event.value);
 
-    if (score.length === 10) {
+    if (score.length == 10){   
+      history.push('/table');
       const response = await axios.post("/results", body, config);
       setBackendResponse(response.data.message);
       console.log(response);
@@ -129,9 +135,6 @@ const Quiz = () => {
       );
     }
   });
-  const history = useHistory();
-  const handleClick2 = () => history.push("/table");
-
   return (
     <div className="allQ">
       <h1>Questions</h1>
@@ -139,12 +142,21 @@ const Quiz = () => {
       <Timer value={start} handleClick={handleClick} />
 
       <div className={`${showQ ? "questionShow" : "questionHide"}`}>
+<<<<<<< HEAD
         <form onChange={formHandler}>{allQuestions}</form>
 
         <form onSubmit={sendBackend}>
           <button onClick={handleClick2} type="submit" className="sub">
             Submit
           </button>
+=======
+        <form onChange={formHandler}>
+          {allQuestions}
+        </form>
+  
+        <form onSubmit={sendBackend}>   
+          <button type="submit" className="sub" confettiClick={confettiClick} >Submit</button>
+>>>>>>> 71fdfca9c39e1619d27b81bf2c72a6e1848cdf7f
         </form>
         {backendResponse}
       </div>
