@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./table.css";
+import makeConfetti from "./Confetti";
 
 class Table extends Component {
   state = {
@@ -15,9 +16,8 @@ class Table extends Component {
   };
 
   handleClick() {
-    this.props.history.push('/select');
+    this.props.history.push("/select");
   }
-   
 
   componentDidMount() {
     let data = this.state.scores;
@@ -30,27 +30,34 @@ class Table extends Component {
   render() {
     const { scores } = this.state;
     return (
-      <div className="main">
-        <h1>Scoreboard</h1>
+      <div className="mainTable">
+        <makeConfetti />
+        <h1 className="scoreboard">Scoreboard</h1>
+        <h3>Congratulations user, you got 5/10 correct in 1m 35s. </h3>
+        <h3>Check your how you did on our scoreboard below</h3>
         <div className="titles">
-          <h3>Username</h3>
-          <h3>Score</h3>
-          <h3>Time</h3>
+          <h3 className="userName">Username</h3>
+          <h3 className="score">Score</h3>
+          <h3 className="time">Time</h3>
         </div>
         {scores.map((person) => {
           return (
             <div className="table">
-              <p>{person.name}</p>
-              <p>{person.score}</p>
-              <p>{person.time}</p>
+              <div className="name">
+                <p>{person.name}</p>
+              </div>
+              <p className="userScore">{person.score}</p>
+              <p classNAME="userTime">{person.time}</p>
             </div>
           );
         })}
         <br />
 
-        <button onClick={() => this.handleClick()} >Try Again</button>
+        <button onClick={() => this.handleClick()} className="tryAgain">
+          Try Again
+        </button>
 
-        <button>Logout</button>
+        <button className="logout">Logout</button>
       </div>
     );
   }

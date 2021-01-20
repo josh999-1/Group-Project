@@ -1,7 +1,7 @@
 import { Component } from "react";
 import "./quiz.css";
 
-let urTime
+let urTime;
 
 const React = require("react");
 const ms = require("pretty-ms");
@@ -47,35 +47,34 @@ class Timer extends React.Component {
           Start
         </button>
       ) : null;
-    let stop =
-      this.state.time === 0 || !this.state.isOn ? null : (
-        <button onClick={this.stopTimer}>stop</button>
-      );
-    let resume =
-      this.state.time === 0 || this.state.isOn ? null : (
-        <button onClick={this.startTimer}>resume</button>
-      );
-    let reset =
-      this.state.time === 0 || this.state.isOn ? null : (
-        <button onClick={this.resetTimer}>reset</button>
-      );
-    urTime = ms(this.state.time)
-    
+    // let stop =
+    //   this.state.time === 0 || !this.state.isOn ? null : (
+    //     <button onClick={this.stopTimer}>stop</button>
+    //   );
+    // let resume =
+    //   this.state.time === 0 || this.state.isOn ? null : (
+    //     <button onClick={this.startTimer}>resume</button>
+    //   );
+    // let reset =
+    //   this.state.time === 0 || this.state.isOn ? null : (
+    //     <button onClick={this.resetTimer}>reset</button>
+    //   );
+    urTime = ms(this.state.time);
+
     return (
       <div>
         <h3>Timer: {ms(this.state.time)}</h3>
         {start}
-        {resume}
+        {/* {resume}
         {stop}
-        {reset}
+        {reset} */}
         {/* <p>Your time {ms(this.state.time)}</p> */}
       </div>
     );
   }
 }
 
-
-export {urTime}
+export { urTime };
 export default Timer;
 
 export class start extends Component {
