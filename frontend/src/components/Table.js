@@ -40,7 +40,6 @@ const Table = () => {
   
     return (
       <div className="mainTable">
-        <makeConfetti />
         <h1 className="scoreboard">Scoreboard</h1>
         <Confetti />
         <p>Congratulations {name}, you got {curScore.score}/10 in {curScore.time}</p>
@@ -60,8 +59,8 @@ const Table = () => {
               </div>
             );
           })
-          <br />  
-        
+          <br/>  
+        <div>
         <button onClick={handleClick} >Try Again</button>      
         <button className="logout">Logout</button>
      </div>
@@ -70,7 +69,7 @@ const Table = () => {
   return(
     <h1>{componentDid()}</h1>
   )
-}  };
+};  
 
 export default Table;
 
