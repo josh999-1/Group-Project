@@ -1,19 +1,31 @@
 .questionHide {
-  display: none;
+  /* display: none; */
+  opacity: 0.5;
+  filter: blur(4px);
+  margin-top: 50px;
 }
 
 .questionShow {
   display: block;
+  margin-top: 50px;
 }
 
-body {
-  margin-left: 30px;
-}
-
-button {
+.sub {
   background-color: red;
   color: white;
   font-weight: bold;
   height: 50px;
   width: 150px;
+}
+
+.allQ {
+  margin-left: 30px;
+}
+
+.start {
+  background-color: red;
+  color: white;
+  height: 50px;
+  width: 150px;
+  font-weight: bold;
 }

@@ -1,8 +1,8 @@
 //import e from "cors";
-import { useRef, useState, setState } from "react";
+import { useRef, useState } from "react";
 import "./dropDown.css";
-import { Link, useHistory } from "react-router-dom";
-import Quiz from "./Quiz";
+import {  useHistory } from "react-router-dom";
+
 
 //create category state
 let diff;
@@ -31,14 +31,14 @@ const Select = () => {
     });
   };
 
-  const history = useHistory()
+  const history = useHistory();
   const handleClick = () => {
-    console.log(diff)
-    console.log(cate)
-    history.push("/quiz")
-  }
-  diff = difficulty.difficulty
-  cate = category.category 
+    console.log(diff);
+    console.log(cate);
+    history.push("/quiz");
+  };
+  diff = difficulty.difficulty;
+  cate = category.category;
 
   console.log(category.category);
   console.log(difficulty.difficulty);
@@ -53,43 +53,43 @@ const Select = () => {
   let finalCat = "";
   let finalDif = "";
 
-  if (category.category == 9) {
+  if (category.category === 9) { 
     finalCat = "General Knowledge";
-  } else if (category.category == 18) {
+  } else if (category.category === 18) {
     finalCat = "Science: Computers";
-  } else if (category.category == 15) {
+  } else if (category.category === 15) {
     finalCat = "Entertainment: Video Games";
-  } else if (category.category == 22) {
+  } else if (category.category === 22) {
     finalCat = "Geography";
-  } else if (category.category == 23) {
+  } else if (category.category === 23) {
     finalCat = "History";
-  } else if (category.category == 25) {
+  } else if (category.category === 25) {
     finalCat = "Art";
-  } else if (category.category == 28) {
+  } else if (category.category === 28) {
     finalCat = "Vehicles";
-  } else if (category.category == 27) {
+  } else if (category.category === 27) {
     finalCat = "Animals";
-  } else if (category.category == 21) {
+  } else if (category.category === 21) {
     finalCat = "Sports";
-  } else if (category.category == 20) {
+  } else if (category.category === 20) {
     finalCat = "Mythology";
   }
 
-  if (difficulty.difficulty == "easy") {
+  if (difficulty.difficulty === "easy") {
     finalDif = "Easy";
-  } else if (difficulty.difficulty == "medium") {
+  } else if (difficulty.difficulty === "medium") {
     finalDif = "Medium";
-  } else if (difficulty.difficulty == "hard") {
+  } else if (difficulty.difficulty === "hard") {
     finalDif = "Hard";
   }
 
   return (
     <div className="main">
       <h2>Welcome user</h2>
-      <h1>Quiz Selection</h1>
+
       <div className="menu-container">
         <button onClick={onClick} className="menu-trigger">
-          <span>Category</span>
+          <span>Select Category</span>
         </button>
         <nav
           ref={dropdownRef}
@@ -151,7 +151,7 @@ const Select = () => {
       </div>
       <div className="menu-container2">
         <button onClick={onClickDif} className="menu-trigger2">
-          <span>Difficulty</span>
+          <span>Select Difficulty</span>
         </button>
         <nav
           ref={dropdownRef}
@@ -175,21 +175,21 @@ const Select = () => {
             </li>
           </ul>
         </nav>
+      </div>
+      <div className="options">
+        <h2>Quiz Selection</h2>
         <p>You have selected</p>
         <p className="cat">{finalCat}</p>
         <p>Difficulty Level</p>
         <p className="dif">{finalDif}</p>
 
-        <button onClick={handleClick} type="button" className="quizBut" >
+        <button onClick={handleClick} type="button" className="quizBut">
           Start Quiz
         </button>
-
       </div>
     </div>
   );
-  
 };
 
-export {diff, cate}
+export { diff, cate };
 export default Select;
-

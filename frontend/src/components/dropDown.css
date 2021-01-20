@@ -1,9 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda&display=swap");
+
+body {
+  font-family: "Bodoni Moda", serif;
+}
+
 .menu-container {
   position: relative;
+  top: 0px;
 }
 .menu-container2 {
   position: relative;
-  top: 200px;
+  top: -40px;
+  left: 600px;
 }
 
 .menu {
@@ -11,7 +19,7 @@
   border-radius: 8px;
   position: absolute;
   top: 0px;
-  right: 800px;
+  right: 850px;
   width: 300px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
   opacity: 0;
@@ -88,6 +96,8 @@
   border: none;
   vertical-align: middle;
   transition: box-shadow 0.4s ease;
+  height: 40px;
+  width: 150px;
 }
 
 .menu-trigger2 {
@@ -102,6 +112,8 @@
   border: none;
   vertical-align: middle;
   transition: box-shadow 0.4s ease;
+  height: 40px;
+  width: 150px;
 }
 
 .menu-trigger:hover {
@@ -149,4 +161,27 @@
   background-color: red;
   font-size: 35px;
   color: white;
+}
+
+span {
+  z-index: 1;
+}
+
+.options {
+  position: relative;
+  top: 0px;
+}
+
+.menu button {
+  color: white;
+  background-color: #074fad;
+  height: 60px;
+  width: 150px;
+}
+
+.menu2 button {
+  color: white;
+  background-color: #074fad;
+  height: 60px;
+  width: 150px;
 }

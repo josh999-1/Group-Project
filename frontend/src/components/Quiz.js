@@ -29,10 +29,10 @@ const Quiz = () => {
 
   const formHandler = async (event) => {
     console.log(event.target.value);
-    if (event.target.value == "correct") {
+    if (event.target.value === "correct") {
       score[event.target.name] = "correct";
     } 
-    else if (event.target.value != "correct") {
+    else if (event.target.value !== "correct") {
       score[event.target.name] = "incorrect";
     }
     console.log(score);
@@ -75,7 +75,7 @@ const Quiz = () => {
     let num = Math.floor(Math.random() * 4) + 1;
     console.log(score);
 
-    if (num == 1) {
+    if (num === 1) {
       return (
         <div>
           <h3>Question: {results.question}</h3>
@@ -89,7 +89,7 @@ const Quiz = () => {
           <label for="answer4">answer 4: {incor3} </label> <br />
         </div>
       );
-    } else if (num == 2) {
+    } else if (num === 2) {
       return (
         <div>
           <h3>Question: {results.question}</h3>
@@ -103,7 +103,7 @@ const Quiz = () => {
           <label for="answer4">answer 4: {incor3} </label> <br />
         </div>
       );
-    } else if (num == 3) {
+    } else if (num === 3) { 
       return (
         <div>
           <h3>Question: {results.question}</h3>
@@ -134,7 +134,7 @@ const Quiz = () => {
     }
   });
   return (
-    <div>
+    <div className="allQ">
       <h1>Questions</h1>
 
       <Timer value={start} handleClick={handleClick} />
