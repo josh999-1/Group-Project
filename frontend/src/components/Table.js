@@ -2,17 +2,13 @@ import React, { Component, useEffect, useState } from "react";
 import axios from 'axios'
 import "./table.css";
 import Confetti from "./Confetti";
+import results from "./Results";
+import { useHistory } from "react-router-dom";
 
-class Table extends Component {
-  state = {
-    scores: [
-      { name: "John", score: 8, time: 120 },
-      { name: "Rodger", score: 10, time: 140 },
-      { name: "Lola", score: 5, time: 180 },
-      { name: "Mike", score: 5, time: 140 },
-      { name: "Chris", score: 10, time: 135 },
-    ],
-  }
+const Table = () => {
+  const [scores, setScores] = useState([])
+  const [curScore, setcurScore] = useState({})
+  const [name, setName] = useState("")
 
   const fetchData = async () => {
     const response = await axios.get('/table')
@@ -44,20 +40,23 @@ class Table extends Component {
   
     return (
       <div className="mainTable">
+        <makeConfetti />
         <h1 className="scoreboard">Scoreboard</h1>
         <Confetti />
-        <h3>Congratulations user, you got 5/10 correct in 1m 35s. </h3>
-        <h3>Check your how you did on our scoreboard below</h3>
-        <div className="titles">
-          <h3 className="userName">Username</h3>
-          <h3 className="score">Score</h3>
-          <h3 className="time">Time</h3>
-        </div>
-        {scores.map((person) => {
-          return (
-            <div className="table">
-              <div className="name">
-                <p>{person.name}</p>
+        <p>Congratulations {name}, you got {curScore.score}/10 in {curScore.time}</p>
+          <div className="titles">
+            <h3 className="userName">Username</h3>
+            <h3 className="score">Score</h3>
+            <h3 className="time">Time</h3>
+          </div>
+          {scores.map((scores) => {
+            return (
+              <div className="table">
+                <div className="name">
+                  <p>{scores.userid.name}</p>
+                </div>
+                <p className="userScore">{scores.score}</p>
+                <p className="userTime">{scores.time}</p>
               </div>
             );
           })
@@ -74,3 +73,4 @@ class Table extends Component {
 }  };
 
 export default Table;
+
