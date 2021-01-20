@@ -26,8 +26,9 @@ const Table = () => {
   }, [])
 
   const history = useHistory()
-  const handleClick = () => {
+  const handleClick = async () => {
     history.push('/select');
+    await axios.get('/tryAgain')
   }
   console.log(scores)
   const componentDid = () => {

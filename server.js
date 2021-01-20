@@ -112,12 +112,14 @@ app.post('/results', auth.isLoggedIn, async (req, res) => {
         }
         
     }
-    await userScore.create({
+    const justNow = await userScore.create({
         score: score,
         time: time,
         userid: req.userFound._id
     })
-    const sco = await userScore.findOne({userid: req.userFound._id})
+    console.log("here", justNow._id)
+
+    const sco = await userScore.findById({_id: justNow._id})
     const token = jwt1.sign({id: sco._id}, process.env.JWT_SECRET1, {
         expiresIn: process.env.JWT_EXPIRES_IN1
     })
@@ -147,11 +149,11 @@ app.get('/table', auth.isScore, async (req, res) => {
 
 })
 
-
-
-
-
-
+app.get('/tryAgain', auth.logoutScore, (req, res) => {
+    res.json({
+        message: "score logged out"
+    })
+})
 
 app.listen( 5000, () => {
     console.log("Server running on port 5000")
