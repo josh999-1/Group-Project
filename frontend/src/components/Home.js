@@ -10,8 +10,10 @@ const Home = () => {
         <h1 className="triv">Trivia Game</h1>
       </div>
       <div className="homeComponents">
-        <h2 className="home">Home</h2>
-        <Login />
+        <div className="login">
+          <h2 className="home">Home</h2>
+          <Login />
+        </div>
         <Register />
       </div>
       <img

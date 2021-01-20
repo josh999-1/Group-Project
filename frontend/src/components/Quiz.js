@@ -5,8 +5,6 @@ import "./quiz.css";
 import { useHistory } from "react-router-dom";
 import { start, urTime } from "./Timer";
 import { diff, cate } from "./Select";
-import { confettiClick } from "./Confetti";
-// import Results from "./Results"
 
 const Quiz = () => {
   const [showQ, setQ] = useState(false);
@@ -27,10 +25,6 @@ const Quiz = () => {
     );
     console.log(res.data.results);
     setResults(res.data.results);
-  };
-
-  const parse = () => {
-    JSON.parse(setResults.replace(/&quot;/g, '"'));
   };
 
   const formHandler = async (event) => {
@@ -148,12 +142,7 @@ const Quiz = () => {
         <form onChange={formHandler}>{allQuestions}</form>
 
         <form onSubmit={sendBackend}>
-          <button
-            onClick={handleClick2}
-            confettiClick={confettiClick}
-            type="submit"
-            className="sub"
-          >
+          <button onClick={handleClick2} type="submit" className="sub">
             Submit
           </button>
         </form>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./table.css";
-import makeConfetti from "./Confetti";
+import Confetti from "./Confetti";
 
 class Table extends Component {
   state = {
@@ -9,8 +9,6 @@ class Table extends Component {
       { name: "Rodger", score: 10, time: 140 },
       { name: "Lola", score: 5, time: 180 },
       { name: "Mike", score: 5, time: 140 },
-      { name: "Chris", score: 10, time: 135 },
-      { name: "Chris", score: 10, time: 135 },
       { name: "Chris", score: 10, time: 135 },
     ],
   };
@@ -31,8 +29,8 @@ class Table extends Component {
     const { scores } = this.state;
     return (
       <div className="mainTable">
-        <makeConfetti />
         <h1 className="scoreboard">Scoreboard</h1>
+        <Confetti />
         <h3>Congratulations user, you got 5/10 correct in 1m 35s. </h3>
         <h3>Check your how you did on our scoreboard below</h3>
         <div className="titles">
@@ -64,7 +62,3 @@ class Table extends Component {
 }
 
 export default Table;
-
-// <p>
-//                 {person.name} - {person.score} - {person.time}
-//               </p>
