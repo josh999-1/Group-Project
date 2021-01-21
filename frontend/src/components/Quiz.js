@@ -24,11 +24,12 @@ const Quiz = () => {
     );
     console.log(res.data.results);
     setResults(res.data.results);
+
+    console.log("right here", res.data.results[0].question.replace("&quot;", '"'))
+
   };
 
-  const parse = () => {
-    JSON.parse(setResults.replace(/&quot;/g, '"'));
-  };
+  
 
   const formHandler = async (event) => {
     console.log(event.target.value);
@@ -68,10 +69,19 @@ const Quiz = () => {
 
   const allQuestions = results.map((results) => {
     count = count + 1;
-    const cor = results.correct_answer;
-    const incor1 = results.incorrect_answers[0];
-    const incor2 = results.incorrect_answers[1];
-    const incor3 = results.incorrect_answers[2];
+    let cor = results.correct_answer;
+    let incor1 = results.incorrect_answers[0];
+    let incor2 = results.incorrect_answers[1];
+    let incor3 = results.incorrect_answers[2];
+
+    for (let x=0; x < 10; x++) {
+      results.question = results.question.replace("&quot;", '"').replace("&#039;", "'").replace("&amp;", "&")
+      cor = cor.replace("&quot;", '"').replace("&#039;", "'").replace("&amp;", "&")
+      incor1 = incor1.replace("&quot;", '"').replace("&#039;", "'").replace("&amp;", "&")
+      incor2 = incor2.replace("&quot;", '"').replace("&#039;", "'").replace("&amp;", "&")
+      incor3 = incor3.replace("&quot;", '"').replace("&#039;", "'").replace("&amp;", "&")
+      
+    }
     let num = Math.floor(Math.random() * 4) + 1;
     console.log(score);
 
