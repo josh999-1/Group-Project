@@ -24,12 +24,7 @@ const Quiz = () => {
     );
     console.log(res.data.results);
     setResults(res.data.results);
-
-    console.log("right here", res.data.results[0].question.replace("&quot;", '"'))
-
   };
-
-  
 
   const formHandler = async (event) => {
     console.log(event.target.value);
@@ -84,6 +79,7 @@ const Quiz = () => {
     }
     let num = Math.floor(Math.random() * 4) + 1;
     console.log(score);
+    
 
     if (num === 1) {
       return (
