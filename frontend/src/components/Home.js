@@ -17,6 +17,7 @@ const Home = () => {
       <img
         src="https://cdn.pixabay.com/photo/2017/03/31/12/16/quiz-2191229_1280.png"
         className="quizImg"
+        alt="quiz"
       />
     </div>
   );

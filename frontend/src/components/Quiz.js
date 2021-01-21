@@ -2,17 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Timer from "./Timer";
 import "./quiz.css";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import { start, urTime } from "./Timer";
 import { diff, cate } from "./Select";
-// import Results from "./Results"
 
 const Quiz = () => {
   const [showQ, setQ] = useState(false);
   const handleClick = () => setQ(!showQ);
 
   const [results, setResults] = useState([]);
-  const [backendResponse, setBackendResponse] = useState("");
   let score = [];
   console.log(diff, cate);
 
@@ -43,44 +41,47 @@ const Quiz = () => {
         
   
 
+  const parse = () => {
+    JSON.parse(setResults.replace(/&quot;/g, '"'));
+  };
+
   const formHandler = async (event) => {
 
   
     console.log(event.target.value);
     if (event.target.value === "correct") {
       score[event.target.name] = "correct";
-    } 
-    else if (event.target.value !== "correct") {
+    } else if (event.target.value !== "correct") {
       score[event.target.name] = "incorrect";
     }
     console.log(score);
-    console.log(urTime)
+    console.log(urTime);
   };
+  
 
   const sendBackend = async (event) => {
-    console.log(urTime)
+    console.log(urTime);
     const body = {
       score: score,
-      time: urTime
+      time: urTime,
     };
     const config = {
       headers: {
         "Content-Type": "application/json",
       },
     };
-    console.log(score)
-    console.log(event.value)
+    console.log(score);
+    console.log(event.value);
 
     if (score.length === 10){
       const response = await axios.post("/results", body, config);
-      setBackendResponse(response.data.message);
-      console.log(response);
+      
       
     }
     else {
-      console.log("not all answered")
+      console.log("not all answered");
     }
-  }
+  };
   let count = -1;
 
   const allQuestions = results.map((results) => {
@@ -123,7 +124,7 @@ const Quiz = () => {
           <label for="answer4">answer 4: {incor3} </label> <br />
         </div>
       );
-    } else if (num === 3) { 
+    } else if (num === 3) {
       return (
         <div>
           <h3>Question: {results.question}</h3>
@@ -153,7 +154,9 @@ const Quiz = () => {
       );
     }
   });
+  
   const history = useHistory();
+
   const handleClick2 = () => history.push('/table');
   
  
@@ -165,20 +168,16 @@ const Quiz = () => {
       <Timer value={start} handleClick={handleClick} />
 
       <div className={`${showQ ? "questionShow" : "questionHide"}`}>
-        <form onChange={formHandler}>
-          {allQuestions}
+        <form onChange={formHandler}>{allQuestions}</form>
+
+        <form onSubmit={sendBackend}>
+          <button type="submit" className="sub">
+            Submit
+          </button>
         </form>
-  
-        <form onSubmit={sendBackend}>   
-          <button onClick={handleClick2} type="submit" className="sub">Submit</button>
-        </form>
-        {backendResponse}
       </div>
     </div>
   );
 };
-
-
-
 
 export default Quiz;

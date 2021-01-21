@@ -5,6 +5,7 @@ const cors = require('cors');
 const User = require('./models/user')
 const userScore = require('./models/userScore')
 const jwt = require('jsonwebtoken')
+const jwt1 = require('jsonwebtoken')
 const bcrypt = require('bcryptjs') 
 const auth = require('./middlewares/auth')
 const axios = require('axios')
@@ -111,50 +112,48 @@ app.post('/results', auth.isLoggedIn, async (req, res) => {
         }
         
     }
-    console.log(score)
-
-    await userScore.create({
+    const justNow = await userScore.create({
         score: score,
         time: time,
         userid: req.userFound._id
     })
+    console.log("here", justNow._id)
+
+    const sco = await userScore.findById({_id: justNow._id})
+    const token = jwt1.sign({id: sco._id}, process.env.JWT_SECRET1, {
+        expiresIn: process.env.JWT_EXPIRES_IN1
+    })
+    console.log(token)
+
+    const cookieOptions = {
+        expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPRESS1 * 24 * 60 * 60 * 1000), httpOnly: true
+    }
+    res.cookie('jwt1', token, cookieOptions)  
 
     res.json({
         message: "this is from backend"
     })
 })
 
-app.post('/score', auth.isLoggedIn, async (req, res) => {
-    console.log("reached backend")
-    console.log(req.body.score)
-    const scoreArr = req.body.score
-    let score = 0
-    let time = 5
-    
-    for (let x= 0; x < scoreArr.length; x++) {
-    if (scoreArr[x] == "correct"){
-    score = score + 1
-    }
-    
-    }
-    console.log(score)
-    
-    await userScore.create({
-    score: score,
-    time: time
-    })
-    
+app.get('/table', auth.isScore, async (req, res) => {
+    const leaderBoard = await userScore.find().populate('userid', 'name')
+    console.log(leaderBoard)
+
+    const curScore = await userScore.findById({_id: req.scoreFound._id}).populate('userid', 'name')
+    console.log(curScore)
+
     res.json({
-    message: "this is from backend"
+        leaderBoard,
+        curScore
     })
+
+})
+
+app.get('/tryAgain', auth.logoutScore, (req, res) => {
+    res.json({
+        message: "score logged out"
     })
-    
-
-
-
-
-
-
+})
 
 app.listen( 5000, () => {
     console.log("Server running on port 5000")
