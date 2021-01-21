@@ -20,7 +20,7 @@ function App() {
         <Route exact path="/select" component={Select} />
         <Route exact path="/results" component={Results} />
         <ScrollToTop>
-        <Route exact path="/table" component={Table} />
+          <Route exact path="/table" component={Table} />
         </ScrollToTop>
         <Route exact path="/score" component={Score} />
         <Redirect from="/register" to="/select" />
