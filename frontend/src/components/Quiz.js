@@ -25,10 +25,27 @@ const Quiz = () => {
       `https://opentdb.com/api.php?amount=10&category=${cate}&difficulty=${diff}&type=multiple`
     );
     console.log(res.data.results);
-    setResults(res.data.results);
-  };
+    
+    setResults(res.data.results)
+
+
+  //  JSON.parse(setResults.replace(/&quot;/g,"''"))
+  //  JSON.parse(setResults.replace(/&#039;/g,'"'))
+  //  JSON.parse(setResults.replace(/&amp;/g,"&"))
+
+    
+};
+
+
+  
+    
+
+        
+  
 
   const formHandler = async (event) => {
+
+  
     console.log(event.target.value);
     if (event.target.value === "correct") {
       score[event.target.name] = "correct";
@@ -58,6 +75,7 @@ const Quiz = () => {
       const response = await axios.post("/results", body, config);
       setBackendResponse(response.data.message);
       console.log(response);
+      
     }
     else {
       console.log("not all answered")
@@ -66,6 +84,9 @@ const Quiz = () => {
   let count = -1;
 
   const allQuestions = results.map((results) => {
+
+   
+
     count = count + 1;
     const cor = results.correct_answer;
     const incor1 = results.incorrect_answers[0];
@@ -134,6 +155,8 @@ const Quiz = () => {
   });
   const history = useHistory();
   const handleClick2 = () => history.push('/table');
+  
+ 
 
   return (
     <div className="allQ">
