@@ -24,13 +24,13 @@ const Table = () => {
     fetchData();
   }, []);
 
-  const history = useHistory()
+  const history = useHistory();
   const handleClick = async () => {
-    history.push('/select');
-    await axios.get('/tryAgain')
-  }
-  console.log(scores)
-  
+    history.push("/select");
+    await axios.get("/tryAgain");
+  };
+  console.log(scores);
+
   const componentDid = () => {
     let data = scores;
     console.log(data);
@@ -43,7 +43,7 @@ const Table = () => {
       <div className="mainTable">
         <h1 className="scoreboard">Scoreboard</h1>
         <Confetti />
-        <p>
+        <p className="para">
           Congratulations {name}, you got {curScore.score}/10 in {curScore.time}
         </p>
         <div className="titles">
@@ -69,7 +69,9 @@ const Table = () => {
       </div>
     );
   };
-  return <h1>{componentDid()}</h1>;
+  return (
+    <h1>{componentDid()}</h1>
+  );
 };
 
 export default Table;

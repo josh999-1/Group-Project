@@ -13,7 +13,6 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        
         <Route exact path="/" component={Home} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
@@ -21,7 +20,7 @@ function App() {
         <Route exact path="/select" component={Select} />
         <Route exact path="/results" component={Results} />
         <ScrollToTop>
-        <Route exact path="/table" component={Table} />
+          <Route exact path="/table" component={Table} />
         </ScrollToTop>
         <Route exact path="/score" component={Score} />
         <Redirect from="/register" to="/select" />
