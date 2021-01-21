@@ -23,31 +23,14 @@ const Quiz = () => {
       `https://opentdb.com/api.php?amount=10&category=${cate}&difficulty=${diff}&type=multiple`
     );
     console.log(res.data.results);
-    
-    setResults(res.data.results)
-
-
-  //  JSON.parse(setResults.replace(/&quot;/g,"''"))
-  //  JSON.parse(setResults.replace(/&#039;/g,'"'))
-  //  JSON.parse(setResults.replace(/&amp;/g,"&"))
-
-    
-};
-
-
-  
-    
-
-        
-  
+    setResults(res.data.results);
+  };
 
   const parse = () => {
     JSON.parse(setResults.replace(/&quot;/g, '"'));
   };
 
   const formHandler = async (event) => {
-
-  
     console.log(event.target.value);
     if (event.target.value === "correct") {
       score[event.target.name] = "correct";
@@ -57,7 +40,7 @@ const Quiz = () => {
     console.log(score);
     console.log(urTime);
   };
-  
+  const history = useHistory();
 
   const sendBackend = async (event) => {
     console.log(urTime);
@@ -73,11 +56,10 @@ const Quiz = () => {
     console.log(score);
     console.log(event.value);
 
-    if (score.length === 10){
-      const response = await axios.post("/results", body, config);
-      
-      
-    }
+    if (score.length == 10){   
+      history.push('/results');
+      await axios.post("/results", body, config);
+    } 
     else {
       console.log("not all answered");
     }
@@ -85,9 +67,6 @@ const Quiz = () => {
   let count = -1;
 
   const allQuestions = results.map((results) => {
-
-   
-
     count = count + 1;
     const cor = results.correct_answer;
     const incor1 = results.incorrect_answers[0];
@@ -154,13 +133,6 @@ const Quiz = () => {
       );
     }
   });
-  
-  const history = useHistory();
-
-  const handleClick2 = () => history.push('/table');
-  
- 
-
   return (
     <div className="allQ">
       <h1>Questions</h1>
@@ -179,5 +151,3 @@ const Quiz = () => {
     </div>
   );
 };
-
-export default Quiz;

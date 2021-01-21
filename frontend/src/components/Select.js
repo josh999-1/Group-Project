@@ -87,17 +87,15 @@ const Select = () => {
   return (
     <div className="main">
       <h2>Welcome user</h2>
-      <button onClick={onClick} className="menu-trigger">
-          <span>Select Category</span>
-        </button>
 
       <div className="menu-container">
-        
-        <nav 
+        <button onClick={onClick} className="menu-trigger">
+          <span>Select Category</span>
+        </button>
+        <nav
           ref={dropdownRef}
           className={`menu ${isActive ? "active" : "inactive"}`}
         >
-        <div className="categoryPositon" >
           <ul>
             <li>
               <button name="category" value={9} onClick={setData}>
@@ -150,11 +148,8 @@ const Select = () => {
               </button>
             </li>
           </ul>
-        </div>
         </nav>
       </div>
-
-      
       <div className="menu-container2">
         <button onClick={onClickDif} className="menu-trigger2">
           <span>Select Difficulty</span>
