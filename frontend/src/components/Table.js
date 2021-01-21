@@ -69,7 +69,9 @@ const Table = () => {
       </div>
     );
   };
-  return <h1>{componentDid()}</h1>;
+  return (
+    <h1>{componentDid()}</h1>
+  );
 };
 
 export default Table;
