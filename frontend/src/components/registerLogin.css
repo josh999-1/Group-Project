@@ -44,6 +44,8 @@
   border: none;
   vertical-align: middle;
   transition: box-shadow 0.4s ease;
+  height: 50%;
+  width: 70%;
 }
 
 .menu-trigger:hover {
@@ -65,8 +67,8 @@ button {
   font-family: "Bodoni Moda", serif;
   position: relative;
   top: 10px;
-  height: 40px;
-  width: 100px;
+  height: 40%;
+  width: 100%;
 }
 
 form.menu.active {

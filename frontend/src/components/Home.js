@@ -10,15 +10,16 @@ const Home = () => {
         <h1 className="triv">Trivia Game</h1>
       </div>
       <div className="homeComponents">
-        <h2 className="home">Home</h2>
         <Login />
         <Register />
       </div>
-      <img
-        src="https://cdn.pixabay.com/photo/2017/03/31/12/16/quiz-2191229_1280.png"
-        className="quizImg"
-        alt="quiz"
-      />
+      <div className="image">
+        <img
+          src="https://cdn.pixabay.com/photo/2017/03/31/12/16/quiz-2191229_1280.png"
+          className="quizImg"
+          alt="quiz"
+        />
+      </div>
     </div>
   );
 };

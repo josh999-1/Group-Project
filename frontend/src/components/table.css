@@ -57,9 +57,12 @@
   background-color: #074fad;
   height: 60px;
   width: 150px;
-  position: relative;
-  left: 110px;
-  margin-bottom: 100px;
+}
+
+.buts {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 /* .userName {

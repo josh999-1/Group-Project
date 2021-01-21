@@ -32,12 +32,13 @@ const Table = () => {
   console.log(scores);
 
   const componentDid = () => {
-    let data = scores;
-    console.log(data);
-    // let sorted = data.sort((a, b) => {
-    //   return b.score - a.score || a.time - b.time;
-    // });
-    // setScores({ scores: sorted });
+    scores.sort((a, b) => {
+      return b.score - a.score || a.time.split("s")[0] - b.time.split("s")[0]
+    })
+
+    while (scores.length > 10){
+      scores.pop()
+    }
 
     return (
       <div className="mainTable">
@@ -64,14 +65,16 @@ const Table = () => {
         })}
         <br />
 
-        <button onClick={handleClick}>Try Again</button>
-        <button className="logout">Logout</button>
+        <div className="buts">
+          <button onClick={handleClick} className="tryAgain">
+            Try Again
+          </button>
+          <button className="logout">Logout</button>
+        </div>
       </div>
     );
   };
-  return (
-    <h1>{componentDid()}</h1>
-  );
+  return <h1>{componentDid()}</h1>;
 };
 
 export default Table;
