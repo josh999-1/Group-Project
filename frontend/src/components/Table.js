@@ -64,14 +64,16 @@ const Table = () => {
         })}
         <br />
 
-        <button onClick={handleClick}>Try Again</button>
-        <button className="logout">Logout</button>
+        <div className="buts">
+          <button onClick={handleClick} className="tryAgain">
+            Try Again
+          </button>
+          <button className="logout">Logout</button>
+        </div>
       </div>
     );
   };
-  return (
-    <h1>{componentDid()}</h1>
-  );
+  return <h1>{componentDid()}</h1>;
 };
 
 export default Table;

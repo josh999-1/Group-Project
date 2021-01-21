@@ -1,0 +1,23 @@
+.message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: red;
+}
+
+.finish {
+  height: 60%;
+  width: 60%;
+}
+
+.picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
