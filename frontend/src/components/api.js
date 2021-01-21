@@ -11,6 +11,7 @@ componentDidMount() {
 axios
 .get("https://opentdb.com/api.php?amount=10&encode=url3986")
 .then(response => {
+    
 
 // create an array of contacts only with relevant data
 const newContacts = response.data.map(c => {

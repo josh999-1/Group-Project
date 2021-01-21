@@ -26,9 +26,17 @@ const Quiz = () => {
     setResults(res.data.results);
   };
 
-  const parse = () => {
+const parse = () => {
+
     JSON.parse(setResults.replace(/&quot;/g, '"'));
+    JSON.parse(setResults.replace(/&#039;/g,'"'));
+    JSON.parse(setResults.replace(/&amp;/g,"&"));
+
   };
+
+  
+
+  
 
   const formHandler = async (event) => {
     console.log(event.target.value);
@@ -74,6 +82,7 @@ const Quiz = () => {
     const incor3 = results.incorrect_answers[2];
     let num = Math.floor(Math.random() * 4) + 1;
     console.log(score);
+    
 
     if (num === 1) {
       return (
