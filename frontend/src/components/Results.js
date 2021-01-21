@@ -1,29 +1,22 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import "./results.css";
 
 const Results = () => {
-  // const [curScore, setcurScore] = useState({})
-  // const [name, setName] = useState("")
-
-  // const fetchData = async () => {
-  //   const response = await axios.get('/results')
-  //   console.log(response.data.curScore)
-  //   setcurScore(response.data.curScore)
-
-  //   setName(response.data.curScore.userid.name)
-  // }
-  // useEffect(() => {
-  //   fetchData()
-  // }, [])
-
-  // const score = curScore.score
-  // const time = curScore.time
-  // console.log(name, score, time)
-
   return (
-    <div>
-      <h1>Congratulations</h1>
-      <a href="/table">Click here to view your place on our leaderboards</a>
+    <div className="cluster">
+      <div className="middle">
+        <h1 className="message">
+          Well played, you're done! Now lets see how you did!{" "}
+        </h1>
+        <a href="/table" className="link">
+          Click here to view your place on our leaderboards
+        </a>
+      </div>
+      <div className="picture">
+        <img
+          src="https://cdn.pixabay.com/photo/2018/12/05/08/44/win-3857339_1280.png"
+          className="finish"
+        ></img>
+      </div>
     </div>
   );
 };
