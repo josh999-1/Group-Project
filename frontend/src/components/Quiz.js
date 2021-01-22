@@ -70,11 +70,11 @@ const Quiz = () => {
     let incor3 = results.incorrect_answers[2];
 
     for (let x=0; x < 10; x++) {
-      results.question = results.question.replace("&quot;", '"').replace("&#039;", "'").replace("&amp;", "&")
-      cor = cor.replace("&quot;", '"').replace("&#039;", "'").replace("&amp;", "&")
-      incor1 = incor1.replace("&quot;", '"').replace("&#039;", "'").replace("&amp;", "&")
-      incor2 = incor2.replace("&quot;", '"').replace("&#039;", "'").replace("&amp;", "&")
-      incor3 = incor3.replace("&quot;", '"').replace("&#039;", "'").replace("&amp;", "&")
+      results.question = results.question.replace("&quot;", '"').replace("&#039;", "'").replace("&amp;", "&").replace("&pi;", "π")
+      cor = cor.replace("&quot;", '"').replace("&#039;", "'").replace("&amp;", "&").replace("&pi;", "π")
+      incor1 = incor1.replace("&quot;", '"').replace("&#039;", "'").replace("&amp;", "&").replace("&pi;", "π")
+      incor2 = incor2.replace("&quot;", '"').replace("&#039;", "'").replace("&amp;", "&").replace("&pi;", "π")
+      incor3 = incor3.replace("&quot;", '"').replace("&#039;", "'").replace("&amp;", "&").replace("&pi;", "π")
       
     }
     let num = Math.floor(Math.random() * 4) + 1;

@@ -10,14 +10,22 @@ const bcrypt = require('bcryptjs')
 const auth = require('./middlewares/auth')
 const axios = require('axios')
 const cookieParser = require('cookie-parser')
+const serverless = require('serverless-http')
+const bodyParser = require('body-parser')
 
 const app = express();
 dotenv.config({path:'./.env'})
+
+function updateDatabase(data) {
+     // update the database
+    return newValue;
+}
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json({extended: false}));
 app.use(cors())
 app.use(cookieParser())
+app.use(bodyParser);
 
 mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,
@@ -27,13 +35,16 @@ mongoose.connect(process.env.DB_URL, {
 }).then(() => console.log("MongoDB is connected"))
 
 app.get('/', (req, res) => {
-    res.send("hello from nodejs")
+    const newValue = updateDatabase(res.body);
+
+    res.json(newValue)
 })
 
 app.post('/register', async(req, res) => {
     console.log("reaching register on backend")
     console.log(req.body)
     let error = false
+    const newValue = updateDatabase(res.body);
 
     const UserDB = await User.find()
     for (let x=0; x<UserDB.length; x++){
@@ -61,13 +72,15 @@ app.post('/register', async(req, res) => {
         res.cookie('jwt', token, cookieOptions)  
         loggedIn = true
         res.json({
-            message: "user was registered"
+            message: "user was registered",
+            newValue
         })
         
     }
     else{
         res.json({
-            message: "email alreay exists on system"
+            message: "email alreay exists on system",
+            newValue
         })
     }
 })
@@ -75,6 +88,7 @@ app.post('/register', async(req, res) => {
 app.post("/login", async (req, res) => {
     const user = await User.findOne({email: req.body.userEmail})
     const isMatch = await bcrypt.compare(req.body.userPassword,user.password)
+    const newValue = updateDatabase(res.body);
 
     if (isMatch){
         const token = jwt.sign({id: user._id}, process.env.JWT_SECRET, {
@@ -88,13 +102,15 @@ app.post("/login", async (req, res) => {
         res.cookie('jwt', token, cookieOptions)
         loggedIn = true
         res.json({
-            message: "user logged in"
+            message: "user logged in",
+            newValue
         })
     
     }
     else{
         res.json({
-            message: "incorrect login details"
+            message: "incorrect login details",
+            newValue
         })
     }
 })
@@ -105,6 +121,7 @@ app.post('/results', auth.isLoggedIn, async (req, res) => {
     const scoreArr = req.body.score
     const time = req.body.time
     let score = 0
+    const newValue = updateDatabase(res.body);
 
     for (let x=0; x < scoreArr.length; x++) {
         if (scoreArr[x] == "correct"){
@@ -131,7 +148,9 @@ app.post('/results', auth.isLoggedIn, async (req, res) => {
     res.cookie('jwt1', token, cookieOptions)  
 
     res.json({
-        message: "this is from backend"
+        message: "this is from backend",
+        newValue
+
     })
 })
 
@@ -142,19 +161,25 @@ app.get('/table', auth.isScore, async (req, res) => {
     const curScore = await userScore.findById({_id: req.scoreFound._id}).populate('userid', 'name')
     console.log(curScore)
 
+    const newValue = updateDatabase(res.body);
+
     res.json({
         leaderBoard,
-        curScore
+        curScore,
+        newValue
     })
-
 })
 
 app.get('/tryAgain', auth.logoutScore, (req, res) => {
+    const newValue = updateDatabase(res.body);
     res.json({
-        message: "score logged out"
+        message: "score logged out",
+        newValue
     })
 })
 
 app.listen( 5000, () => {
     console.log("Server running on port 5000")
 })
+
+module.exports.handler = serverless(app);
