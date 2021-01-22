@@ -1,3 +1,4 @@
+'use strict';
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
@@ -182,4 +183,5 @@ app.listen( 5000, () => {
     console.log("Server running on port 5000")
 })
 
+module.exports = app;
 module.exports.handler = serverless(app);
