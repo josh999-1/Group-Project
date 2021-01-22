@@ -33,6 +33,16 @@ const Table = () => {
 
   const componentDid = () => {
     scores.sort((a, b) => {
+      let arr = b.time.split("s")
+      arr = arr[0].split("m")
+
+      let arr1 = a.time.split("s")
+      arr1 = arr1[0].split("m")
+
+
+      if (arr.length > 1 || arr1.length > 1){
+        console.log(arr, arr1)
+      }  
       return b.score - a.score || a.time.split("s")[0] - b.time.split("s")[0]
     })
 
