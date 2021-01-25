@@ -6,12 +6,14 @@ import results from "./Results";
 import { useHistory } from "react-router-dom";
 
 const Table = () => {
+  
+
   const [scores, setScores] = useState([]);
   const [curScore, setcurScore] = useState({});
   const [name, setName] = useState("");
 
   const fetchData = async () => {
-    const response = await axios.get("/table");
+    const response = await axios.post("/table");
     console.log(response.data.leaderBoard);
     console.log("hello from the table page")
     setScores(response.data.leaderBoard);

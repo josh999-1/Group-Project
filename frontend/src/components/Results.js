@@ -1,6 +1,16 @@
+import React from "react"
 import "./results.css";
+import {useHistory} from "react-router-dom"
+import axios from "axios"
 
 const Results = () => {
+
+  const history = useHistory();
+
+  const sendBackend = async (event) =>{
+    console.log("here from results")
+    history.push('/table')
+  }
   
   return (
     <div className="cluster">
@@ -8,9 +18,11 @@ const Results = () => {
         <h1 className="message">
           Well played, you're done! Now lets see how you did!{" "}
         </h1>
-        <a href="/table" className="link">
-          Click here to view your place on our leaderboards
-        </a>
+        <form onSubmit={sendBackend} className="resForm">
+          <button type="submit" className="link">
+            Click here to view your place on our leaderboards
+          </button>
+        </form>
       </div>
       <div className="picture">
         <img

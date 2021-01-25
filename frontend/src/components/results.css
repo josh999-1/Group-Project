@@ -3,12 +3,23 @@
   align-items: center;
   justify-content: center;
 }
+.resForm{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .link {
+  border: none;
+  background-color: white;
+  width: fit-content;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
   color: red;
+  
+  
 }
 
 .finish {
