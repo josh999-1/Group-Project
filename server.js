@@ -9,11 +9,13 @@ const jwt1 = require('jsonwebtoken')
 const bcrypt = require('bcryptjs') 
 const auth = require('./middlewares/auth')
 const axios = require('axios')
+const path = require('path')
 const cookieParser = require('cookie-parser')
 
 const app = express();
 dotenv.config({path:'./.env'})
 
+app.use(express.static(path.join(__dirname, './frontend/build')));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json({extended: false}));
 app.use(cors())
@@ -153,6 +155,10 @@ app.get('/tryAgain', auth.logoutScore, (req, res) => {
         message: "score logged out"
     })
 })
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, './frontend/build/index.html'));
+});
 
 app.listen( 5000, () => {
     console.log("Server running on port 5000")
