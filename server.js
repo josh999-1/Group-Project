@@ -15,7 +15,7 @@ const cookieParser = require('cookie-parser')
 const app = express();
 dotenv.config({path:'./.env'})
 
-app.use(express.static(path.join(__dirname, './frontend/build')));
+app.use(express.static(path.join(__dirname, 'build')));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json({extended: false}));
 app.use(cors())
@@ -139,10 +139,10 @@ app.post('/results', auth.isLoggedIn, async (req, res) => {
 
 app.get('/table', auth.isScore, async (req, res) => {
     const leaderBoard = await userScore.find().populate('userid', 'name')
-    console.log(leaderBoard)
+    // console.log(leaderBoard)
 
     const curScore = await userScore.findById({_id: req.scoreFound._id}).populate('userid', 'name')
-    console.log(curScore)
+    // console.log(curScore)
 
     res.json({
         leaderBoard,
@@ -157,7 +157,7 @@ app.get('/tryAgain', auth.logoutScore, (req, res) => {
 })
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './frontend/build/index.html'));
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.listen( 5000, () => {
