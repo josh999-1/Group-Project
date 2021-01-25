@@ -30,6 +30,7 @@ mongoose.connect(process.env.DB_URL, {
 
 app.get('/', (req, res) => {
     res.send("hello from nodejs")
+    console.log("hello form node")
 })
 
 app.post('/register', async(req, res) => {
@@ -102,6 +103,7 @@ app.post("/login", async (req, res) => {
 })
      
 app.post('/results', auth.isLoggedIn, async (req, res) => {
+    console.log("hello form table")
     console.log("reached backend")
     console.log(req.body)
     const scoreArr = req.body.score
@@ -138,6 +140,7 @@ app.post('/results', auth.isLoggedIn, async (req, res) => {
 })
 
 app.get('/table', auth.isScore, async (req, res) => {
+    console.log("hello from table")
     const leaderBoard = await userScore.find().populate('userid', 'name')
     // console.log(leaderBoard)
 

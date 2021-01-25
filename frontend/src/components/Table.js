@@ -12,10 +12,11 @@ const Table = () => {
 
   const fetchData = async () => {
     const response = await axios.get("/table");
-    // console.log(response.data.leaderBoard);
+    console.log(response.data.leaderBoard);
+    console.log("hello from the table page")
     setScores(response.data.leaderBoard);
 
-    // console.log(response.data.curScore);
+    console.log(response.data.curScore);
     setcurScore(response.data.curScore);
 
     setName(response.data.curScore.userid.name);
@@ -84,7 +85,9 @@ const Table = () => {
       </div>
     );
   };
-  return <h1>{componentDid()}</h1>;
+  return(
+    <h1>{componentDid()}</h1>
+  ) 
 };
 
 export default Table;

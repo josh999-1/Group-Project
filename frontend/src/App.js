@@ -7,7 +7,7 @@ import Select from "./components/Select";
 import Results from "./components/Results";
 import Table from "./components/Table";
 import Score from "./components/Score";
-import ScrollToTop from "./components/ScrollToTop";
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
