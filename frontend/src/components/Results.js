@@ -1,6 +1,7 @@
 import "./results.css";
 
 const Results = () => {
+  
   return (
     <div className="cluster">
       <div className="middle">
