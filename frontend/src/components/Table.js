@@ -12,10 +12,10 @@ const Table = () => {
 
   const fetchData = async () => {
     const response = await axios.get("/table");
-    console.log(response.data.leaderBoard);
+    // console.log(response.data.leaderBoard);
     setScores(response.data.leaderBoard);
 
-    console.log(response.data.curScore);
+    // console.log(response.data.curScore);
     setcurScore(response.data.curScore);
 
     setName(response.data.curScore.userid.name);
