@@ -9,11 +9,13 @@ const jwt1 = require('jsonwebtoken')
 const bcrypt = require('bcryptjs') 
 const auth = require('./middlewares/auth')
 const axios = require('axios')
+const path = require('path')
 const cookieParser = require('cookie-parser')
 
 const app = express();
 dotenv.config({path:'./.env'})
 
+app.use(express.static(path.join(__dirname, 'build')));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json({extended: false}));
 app.use(cors())
@@ -28,6 +30,7 @@ mongoose.connect(process.env.DB_URL, {
 
 app.get('/', (req, res) => {
     res.send("hello from nodejs")
+    console.log("hello form node")
 })
 
 app.post('/register', async(req, res) => {
@@ -100,6 +103,7 @@ app.post("/login", async (req, res) => {
 })
      
 app.post('/results', auth.isLoggedIn, async (req, res) => {
+    console.log("hello form table")
     console.log("reached backend")
     console.log(req.body)
     const scoreArr = req.body.score
@@ -135,18 +139,18 @@ app.post('/results', auth.isLoggedIn, async (req, res) => {
     })
 })
 
-app.get('/table', auth.isScore, async (req, res) => {
+app.post('/table', auth.isScore, async (req, res) => {
+    console.log("hello from table")
     const leaderBoard = await userScore.find().populate('userid', 'name')
-    console.log(leaderBoard)
+    // console.log(leaderBoard)
 
     const curScore = await userScore.findById({_id: req.scoreFound._id}).populate('userid', 'name')
-    console.log(curScore)
+    // console.log(curScore)
 
     res.json({
         leaderBoard,
         curScore
     })
-
 })
 
 app.get('/tryAgain', auth.logoutScore, (req, res) => {
@@ -155,6 +159,10 @@ app.get('/tryAgain', auth.logoutScore, (req, res) => {
     })
 })
 
-app.listen( 5000, () => {
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+app.listen(process.env.PORT || 5000, () => {
     console.log("Server running on port 5000")
 })

@@ -6,13 +6,16 @@ import results from "./Results";
 import { useHistory } from "react-router-dom";
 
 const Table = () => {
+  
+
   const [scores, setScores] = useState([]);
   const [curScore, setcurScore] = useState({});
   const [name, setName] = useState("");
 
   const fetchData = async () => {
-    const response = await axios.get("/table");
+    const response = await axios.post("/table");
     console.log(response.data.leaderBoard);
+    console.log("hello from the table page")
     setScores(response.data.leaderBoard);
 
     console.log(response.data.curScore);
@@ -33,6 +36,16 @@ const Table = () => {
 
   const componentDid = () => {
     scores.sort((a, b) => {
+      // let arr = b.time.split("s")
+      // arr = arr[0].split("m")
+
+      // let arr1 = a.time.split("s")
+      // arr1 = arr1[0].split("m")
+
+
+      // if (arr.length > 1 || arr1.length > 1){
+      //   console.log(arr, arr1)
+      // }  
       return b.score - a.score || a.time.split("s")[0] - b.time.split("s")[0]
     })
 
@@ -74,7 +87,9 @@ const Table = () => {
       </div>
     );
   };
-  return <h1>{componentDid()}</h1>;
+  return(
+    <h1>{componentDid()}</h1>
+  ) 
 };
 
 export default Table;
