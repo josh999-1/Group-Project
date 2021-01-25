@@ -139,7 +139,7 @@ app.post('/results', auth.isLoggedIn, async (req, res) => {
     })
 })
 
-app.get('/table', auth.isScore, async (req, res) => {
+app.post('/table', auth.isScore, async (req, res) => {
     console.log("hello from table")
     const leaderBoard = await userScore.find().populate('userid', 'name')
     // console.log(leaderBoard)
