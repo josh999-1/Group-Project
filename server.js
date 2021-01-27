@@ -153,9 +153,23 @@ app.post('/table', auth.isScore, async (req, res) => {
     })
 })
 
+app.post('/leaderboard', async (req, res) => {
+    console.log("leaderboard backend")
+    const leaderBoard = await userScore.find().populate('userid', 'name')
+
+    res.json({
+        leaderBoard
+    })
+})
+
 app.get('/tryAgain', auth.logoutScore, (req, res) => {
     res.json({
         message: "score logged out"
+    })
+})
+app.get("/logout", auth.logout, (req, res) => {    
+    res.json({
+        message: "logged out"
     })
 })
 
