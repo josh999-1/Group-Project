@@ -5,6 +5,8 @@ h1.triv {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 10px;
+  padding-bottom: 20px;
 }
 
 .header {
@@ -20,6 +22,25 @@ h1.triv {
   position: relative;
   bottom: 10px;
 }
+
+.resForm1 {
+  padding-top: 25px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.link1 {
+  font-size: 16px;
+  border: none;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  background-color: #074fad;
+}
+
 
 .homeComponents {
   display: flex;

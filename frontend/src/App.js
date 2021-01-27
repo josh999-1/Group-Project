@@ -6,7 +6,7 @@ import Quiz from "./components/Quiz";
 import Select from "./components/Select";
 import Results from "./components/Results";
 import Table from "./components/Table";
-import Score from "./components/Score";
+import Leaderboard from "./components/Leaderboard";
 import ScrollToTop from './components/ScrollToTop'
 
 function App() {
@@ -19,10 +19,10 @@ function App() {
         <Route exact path="/quiz" component={Quiz} />
         <Route exact path="/select" component={Select} />
         <Route exact path="/results" component={Results} />
+        <Route exact path="/leaderboard" component={Leaderboard} />
         <ScrollToTop>
           <Route exact path="/table" component={Table} />
-        </ScrollToTop>
-        <Route exact path="/score" component={Score} />
+        </ScrollToTop>      
         <Redirect from="/register" to="/select" />
       </Switch>
     </BrowserRouter>
